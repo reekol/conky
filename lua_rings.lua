@@ -53,6 +53,29 @@ settings_table = {
         start_angle=0,
         end_angle=270
     },
+    {
+        title="Battery status.",
+        text_suffix='/100%',
+        cmd="cat /sys/class/power_supply/BAT*/capacity",
+
+              x=465,
+         text_x=435,
+        title_x=410,
+
+              y=65,
+         text_y=67,
+        title_y=150,
+
+        max=100,
+        bg_colour=0xffffff,
+        bg_alpha=0.1,
+        fg_colour=0xFF6600,
+        fg_alpha=0.1,
+        radius=50,
+        thickness=15,
+        start_angle=0,
+        end_angle=270
+    },
 
 }
 
