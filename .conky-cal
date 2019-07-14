@@ -46,10 +46,6 @@ conky.text = [[
 ${execpi 60 d=$(date +%d) && ncal -3 -M |  sed "s/\ $d/\$\{color2\}\ $d\$\{color\}/g"}
                     ................
 
-
-                    
-
-                    
 ${execi 600 bash ~/.conky/weather.sh }
 
 ]]
