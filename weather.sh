@@ -2,7 +2,7 @@
 data=$(curl -s https://weather-broker-cdn.api.bbci.co.uk/en/forecast/aggregated/727011)
 
 #http://ip-api.com/line/?fields=lat,lon
-
+#http://rss.accuweather.com/rss/liveweather_rss.asp?metric=1&locCode=EUR|BG|SOFIA
 weather_today(){
     echo "Weather for today"
     while IFS= read -r line
