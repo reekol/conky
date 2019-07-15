@@ -1,12 +1,12 @@
 conky.config = {
     own_window_type='normal',
     alignment='top_left',
-    gap_x=1520,
+    gap_x=20,
     gap_y=20,
     maximum_width=1890,
     background=true,
     use_xft=true,
-    font='Monospace:size=7',
+    font='Monospace:size=6',
     xftalpha=1,
     update_interval=1.0,
     total_run_times=0,
@@ -38,6 +38,10 @@ conky.config = {
 
 
 conky.text = [[
+
+
+
+
 $font SSH hosts monitor:
 
 ${execpi 10 cd ~/.conky && bash ./scan.sh }
