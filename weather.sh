@@ -30,11 +30,12 @@ weather_forecast(){
         temp=$(echo "$line" | cut -d'|' -f2)
         hook=$(echo "$line" | cut -d'|' -f3)
         if [ 1 -eq $(echo $hook | grep 'Partly cloudy'                       | wc -l) ]; then echo -n "\${image ~/.conky/weather_icons/Partly_Cloudy.png   -p  0,$i -s 18x18}"; fi
+        if [ 1 -eq $(echo $hook | grep 'Partly cloudy and light winds'       | wc -l) ]; then echo -n "\${image ~/.conky/weather_icons/Windy.png           -p 20,$i -s 18x18}"; fi
         if [ 1 -eq $(echo $hook | grep 'Sunny intervals and a gentle breeze' | wc -l) ]; then echo -n "\${image ~/.conky/weather_icons/Sunny.png           -p  0,$i -s 18x18}"; fi
         if [ 1 -eq $(echo $hook | grep 'Sunny intervals and a gentle breeze' | wc -l) ]; then echo -n "\${image ~/.conky/weather_icons/Windy.png           -p 20,$i -s 18x18}"; fi
         if [ 1 -eq $(echo $hook | grep 'Sunny and a gentle breeze'           | wc -l) ]; then echo -n "\${image ~/.conky/weather_icons/Sunny.png           -p  0,$i -s 18x18}"; fi
         if [ 1 -eq $(echo $hook | grep 'Sunny and a gentle breeze'           | wc -l) ]; then echo -n "\${image ~/.conky/weather_icons/Windy.png           -p 20,$i -s 18x18}"; fi
-        if [ 1 -eq $(echo $hook | grep 'A clear sky and light winds'         | wc -l) ]; then echo -n "\${image ~/.conky/weather_icons/Windy.png           -p  0,$i -s 18x18}"; fi
+        if [ 1 -eq $(echo $hook | grep 'A clear sky and light winds'         | wc -l) ]; then echo -n "\${image ~/.conky/weather_icons/Windy.png           -p 20,$i -s 18x18}"; fi
         echo -e "\n         $date $temp $hook"
         ((i+=20))
     done < <(echo $data | jq '.forecasts[]|"\(.summary.report.localDate)| ${color1}\(.summary.report.minTempC)C / \(.summary.report.maxTempC)C${color}| \(.summary.report.enhancedWeatherDescription)"')
