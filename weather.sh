@@ -28,14 +28,14 @@ weather_forecast(){
         date=$(echo "$line" | cut -d'|' -f1)
         temp=$(echo "$line" | cut -d'|' -f2)
         hook=$(echo "$line" | cut -d'|' -f3)
-        if [ 1 -eq $(echo $hook | grep 'Partly cloudy'                       | wc -l) ]; then echo -n "$(icon Partly_Cloudy) -p  0,$i }"; fi
-        if [ 1 -eq $(echo $hook | grep 'Partly cloudy and light winds'       | wc -l) ]; then echo -n "$(icon Windy        ) -p 20,$i }"; fi
-        if [ 1 -eq $(echo $hook | grep 'Sunny intervals and a gentle breeze' | wc -l) ]; then echo -n "$(icon Sunny        ) -p  0,$i }"; fi
-        if [ 1 -eq $(echo $hook | grep 'Sunny intervals and a gentle breeze' | wc -l) ]; then echo -n "$(icon Windy        ) -p 20,$i }"; fi
-        if [ 1 -eq $(echo $hook | grep 'Sunny and a gentle breeze'           | wc -l) ]; then echo -n "$(icon Sunny        ) -p  0,$i }"; fi
-        if [ 1 -eq $(echo $hook | grep 'Sunny and a gentle breeze'           | wc -l) ]; then echo -n "$(icon Windy        ) -p 20,$i }"; fi
-        if [ 1 -eq $(echo $hook | grep 'A clear sky and light winds'         | wc -l) ]; then echo -n "$(icon Windy        ) -p 20,$i }"; fi
-        echo -e "\n         $date $temp $hook"
+        if [ 1 -eq $(echo $hook | grep 'Partly cloudy'                       | wc -l) ]; then echo -n "$(icon Partly_Cloudy) -p 60,$i }"; fi
+        if [ 1 -eq $(echo $hook | grep 'Partly cloudy and light winds'       | wc -l) ]; then echo -n "$(icon Windy        ) -p 80,$i }"; fi
+        if [ 1 -eq $(echo $hook | grep 'Sunny intervals and a gentle breeze' | wc -l) ]; then echo -n "$(icon Sunny        ) -p 60,$i }"; fi
+        if [ 1 -eq $(echo $hook | grep 'Sunny intervals and a gentle breeze' | wc -l) ]; then echo -n "$(icon Windy        ) -p 80,$i }"; fi
+        if [ 1 -eq $(echo $hook | grep 'Sunny and a gentle breeze'           | wc -l) ]; then echo -n "$(icon Sunny        ) -p 60,$i }"; fi
+        if [ 1 -eq $(echo $hook | grep 'Sunny and a gentle breeze'           | wc -l) ]; then echo -n "$(icon Windy        ) -p 80,$i }"; fi
+        if [ 1 -eq $(echo $hook | grep 'A clear sky and light winds'         | wc -l) ]; then echo -n "$(icon Windy        ) -p 80,$i }"; fi
+        echo -e "\n$date         $temp $hook"
         ((i+=20))
     done < <(echo $data | jq '.forecasts[]|"\(.summary.report.localDate)| ${color1}\(.summary.report.minTempC)C / \(.summary.report.maxTempC)C${color}| \(.summary.report.enhancedWeatherDescription)"')
 }
