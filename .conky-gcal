@@ -1,12 +1,12 @@
 conky.config = {
     own_window_type='normal',
     alignment='top_left',
-    gap_x=826,
-    gap_y=450,
+    gap_x=1750,
+    gap_y=40,
     maximum_width=1890,
     background=true,
     use_xft=true,
-    font='Monospace:size=8',
+    font='Monospace:size=6',
     xftalpha=1,
     update_interval=1.0,
     total_run_times=0,
@@ -29,19 +29,15 @@ conky.config = {
     use_spacer='right',
     own_window_argb_visual=true,
     default_color='white',
-    color0='green',
     color1='cyan',
     color2='DC143C',
     lua_draw_hook_pre='ring_stats',
-    pad_percents=3,
-    lua_load='~/.conky/clock_rings.lua',
-    lua_draw_hook_pre='clock_rings'
+    pad_percents=3
 }
 
+
 conky.text = [[
-                                                                  ┌─────────────────────┐
-                                                                  | ${execpi 1 date +'%Y-%m-%d %H:%M:%S'} |                                                    
-                                                ................  └─────────────────────┘
-${execpi 60 d=$(date +%d) && ncal -3 -M |  sed "s/\ $d/\$\{color2\}\ $d\$\{color\}/g" | sed 's/^/${goto 180}/g'}
-                                                ................
+${color}Agenda:
+    ${execpi 600 date +%Y-%M-%D\ %H:%m:%S && gcalcli --conky --nolineart agenda --military | sed 's/color magenta/color/g' | sed 's/  */ /g'}
+#    ${execpi 600 date +%Y-%M-%D\ %H:%m:%S && gcalcli --nolineart --nocolor agenda --military | sed -e 's/[a-z]/z/gi'}
 ]]

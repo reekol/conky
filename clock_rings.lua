@@ -27,7 +27,7 @@ settings_table = {
         -- "fg_alpha" is the alpha value of the indicator part of the ring.
         fg_alpha=0.2,
         -- "x" and "y" are the x and y coordinates of the centre of the ring, relative to the top left corner of the Conky window.
-        x=480, y=100,
+        x=90, y=100,
         -- "radius" is the radius of the ring.
         radius=50,
         -- "thickness" is the thickness of the ring, centred around the radius.
@@ -45,7 +45,7 @@ settings_table = {
         bg_alpha=0.1,
         fg_colour=0xFF6600,
         fg_alpha=0.4,
-        x=480, y=100,
+        x=90, y=100,
         radius=56,
         thickness=5,
         start_angle=0,
@@ -59,7 +59,7 @@ settings_table = {
         bg_alpha=0.1,
         fg_colour=0xFF6600,
         fg_alpha=0.6,
-        x=480, y=100,
+        x=90, y=100,
         radius=62,
         thickness=5,
         start_angle=0,
@@ -73,7 +73,7 @@ settings_table = {
         bg_alpha=0.1,
         fg_colour=0xFF6600,
         fg_alpha=0.8,
-        x=480, y=100,
+        x=90, y=100,
         radius=70,
         thickness=5,
         start_angle=-90,
@@ -87,7 +87,7 @@ settings_table = {
         bg_alpha=0.1,
         fg_colour=0xFF6600,
         fg_alpha=1,
-        x=480, y=100,
+        x=90, y=100,
         radius=76,
         thickness=5,
         start_angle=-90,
@@ -101,7 +101,7 @@ clock_r=65
 
 -- "clock_x" and "clock_y" are the coordinates of the centre of the clock, in pixels, from the top left of the Conky window.
 
-clock_x=480
+clock_x=90
 clock_y=100
 
 show_seconds=true
