@@ -100,7 +100,4 @@ conky.text = [[
     ${alignr}$font Gpu utilisation    
 ${execpi 10 nvidia-smi | grep 755 -A1 | grep Default | awk '{print $3"\t"$9" / "$11}' | sed 's/^/${goto 90}/g'}
 
-    ${alignr}Service         Port Cnt    
-${execpi 60 sudo  netstat -auntp | grep 'LISTEN' | awk '{print $4 " " $7}' | sed -E "s~(.*):([0-9]+)~\\2~" | sed -E "s~(\\s.*)/(.*)~ \\2~" | sort -k 1,1 | uniq -c | awk -F ' ' '{print "${goto 200}"$3 " " $2 " " $1 }' | column -t}
-
 ]]
