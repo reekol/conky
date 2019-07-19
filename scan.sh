@@ -1,6 +1,6 @@
 #/bin/bash
 
-ips=`for ip in $(cat ~/.ssh/config | grep Name | cut -d' ' -f6); do (ping -c 1 -w 1 $ip &>/dev/null; echo "$?-$ip" ) & done`;wait
+[ -f ~/.ssh/config ] && ips=`for ip in $(cat ~/.ssh/config | grep Name | cut -d' ' -f6); do (ping -c 1 -w 1 $ip &>/dev/null; echo "$?-$ip" ) & done`;wait
 
 print_res(){
     for ip in $ips; do 
@@ -11,9 +11,9 @@ print_res(){
 }
 
 res=$(print_res | sort -r | column -t)
-echo -e $res | grep -v -E '^\$\{color0\}(.*)(sofia)' | column -t
-
-offline=$(echo -e $res | grep -v -E '^\$\{color0\}' | grep color1 | wc -l)
+#echo -e $res | grep -v -E '^\$\{color0\}(.*)(sofia)' | column -t
+echo -e $res | column -t
+#offline=$(echo -e $res | grep -v -E '^\$\{color0\}' | grep color1 | wc -l)
 #if [ $offline -gt '0' ]; then play /usr/share/sounds/KDE-Im-Connection-Lost.ogg ; fi
 
 
