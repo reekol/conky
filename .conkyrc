@@ -98,6 +98,6 @@ conky.text = [[
     ${alignr}$font [ ${tcp_portmon 1 65535 count} ]  connections ─┤       
     ${alignr}$font [ ${tcp_portmon 1 32767 count} ]  in / locale ─┘       
     ${alignr}$font Gpu utilisation    
-${execpi 10 nvidia-smi | grep 755 -A1 | grep Default | awk '{print $3"\t"$9" / "$11}' | sed 's/^/${goto 90}/g'}
+    ${execpi 10 nvidia-smi | grep Default | awk '{print $3"\t"$9" / "$11}' | sed 's/^/${goto 90}/g'}
 
 ]]
