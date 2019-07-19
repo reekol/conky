@@ -2,7 +2,7 @@ conky.config = {
     own_window_type='normal',
     alignment='top_left',
     gap_x=20,
-    gap_y=200,
+    gap_y=180,
     maximum_width=1890,
     background=true,
     use_xft=true,
@@ -44,6 +44,6 @@ conky.text = [[
 
 $font SSH hosts monitor:
 
-${execpi 10 cd ~/.conky && bash ./scan.sh }
+${execpi 10 cd ~/.conky && bash ./scan.sh | pr -6 -W1600 | column -t}
 
 ]]

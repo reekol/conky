@@ -1,7 +1,7 @@
 conky.config = {
     own_window_type='normal',
     alignment='top_left',
-    gap_x=850,
+    gap_x=600,
     gap_y=50,
     maximum_width=1890,
     background=true,
