@@ -31,7 +31,6 @@ conky.config = {
     default_color='white',
     color1='cyan',
     color2='DC143C',
-    lua_draw_hook_pre='ring_stats',
     pad_percents=3
 }
 
