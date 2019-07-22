@@ -3,7 +3,7 @@ conky.config = {
     alignment='top_left',
     gap_x=1750,
     gap_y=40,
-    maximum_width=1890,
+    maximum_width=200,
     background=true,
     use_xft=true,
     font='Monospace:size=6',
