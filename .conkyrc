@@ -76,13 +76,13 @@ conky.text = [[
     ${alignr}$font ${color1}[${color} $diskio_write ${color1}]${color} write ─┤  │  
     ${alignr}$font ram ─┤  │  
     ${alignr}$font ${color1}[${color} $memperc% ${color1}]${color} used ┘ │  │  
-    ${alignr}$font $mem/$memmax ${membar 8,120} ─┤    │  │  
-    ${alignr}$font ${color2}[${color} ${top_mem name 1}  ${top_mem mem 1} ${color2}]${color} ─┤    │  │  
-    ${alignr}$font ${color2}[${color} ${top_mem name 2}  ${top_mem mem 2} ${color2}]${color} ─┤    │  │  
-    ${alignr}$font ${color2}[${color} ${top_mem name 3}  ${top_mem mem 3} ${color2}]${color} ─┤    │  │  
-    ${alignr}$font ${color2}[${color} ${top_mem name 4}  ${top_mem mem 4} ${color2}]${color} ─┤    │  │  
-    ${alignr}$font ${color2}[${color} ${top_mem name 5}  ${top_mem mem 5} ${color2}]${color} ─┘    │  │  
-    ${alignr}$font        │  │  
+    ${alignr}$font $mem/$memmax ${membar 8,120} ─┤  │  │  
+    ${alignr}$font ${color2}[${color} ${top_mem name 1}  ${top_mem mem 1} ${color2}]${color} ─┤  │  │  
+    ${alignr}$font ${color2}[${color} ${top_mem name 2}  ${top_mem mem 2} ${color2}]${color} ─┤  │  │  
+    ${alignr}$font ${color2}[${color} ${top_mem name 3}  ${top_mem mem 3} ${color2}]${color} ─┤  │  │  
+    ${alignr}$font ${color2}[${color} ${top_mem name 4}  ${top_mem mem 4} ${color2}]${color} ─┤  │  │  
+    ${alignr}$font ${color2}[${color} ${top_mem name 5}  ${top_mem mem 5} ${color2}]${color} ─┘  │  │  
+    ${alignr}$font │  │  
     ${alignr}$font $swap/$swapmax ${swapbar 5,120} swap ─┤  │  
     ${alignr}$font ${fs_used /}/${fs_size /} ${fs_bar 5,120 /} root ─┘  │  
     ${alignr}$font │  
