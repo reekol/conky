@@ -37,61 +37,60 @@ conky.config = {
 }
 
 conky.text = [[
-    ${alignr}${offset -60}${font DejaVu Sans:pixelsize=30}${color2}Ree${color1}Kol${font}${color} 
-    ${alignr}${offset -91}▲ 
-    ${alignr}${font monospace:pixelsize=12}${exec date +%H:%M:%S} => ${exec date +%H:%M:%S -u}  └─────────────┐${font}
+    ${alignr}${offset -10}${font DejaVu Sans:pixelsize=30}${color2}Ree${color1}Kol${font}${color}
+    ${alignr}${offset -51}▲ 
+    ${alignr}${font monospace:pixelsize=12}${exec date +%H:%M:%S} - utc:${exec date +%H:%M:%S -u} └───────┐${font}
     ${alignr}  │
-    ${alignr}  ${nodename} ─┤
-    ${alignr}  ${exec uname -r } :  kernel ─┤  │
-    ${alignr}  $machine :    arch ─┤  │
-    ${alignr}  $uptime :  uptime ─┤  │
-    ${alignr}  ${exec cat /sys/class/power_supply/BAT*/capacity}% : battery ─┘  │
+    ${alignr}  ${nodename} ─┬─┤
+    ${alignr}  ${exec uname -r } :  kernel ─┤ │
+    ${alignr}  $machine :    arch ─┤ │
+    ${alignr}  $uptime :  uptime ─┤ │
+    ${alignr}  ${exec cat /sys/class/power_supply/BAT*/capacity}% : battery ─┘ │
     ${alignr}  │
-    ${alignr}  ┌─────── system ─┤
-    ${alignr}  ${color2}CPU-0 ${cpu cpu0}% ${cpubar cpu0 5,50}${color}${alignr} ─┼─ ${freq_g 0} Ghz │  │
-    ${alignr}  CPU-1 ${cpu cpu1}% ${cpubar cpu1 5,50} ─┼─ ${freq_g 1} Ghz │  │
-    ${alignr}  CPU-2 ${cpu cpu2}% ${cpubar cpu2 5,50} ─┼─ ${freq_g 2} Ghz │  │
-    ${alignr}  CPU-3 ${cpu cpu3}% ${cpubar cpu3 5,50} ─┼─ ${freq_g 3} Ghz │  │
-    ${alignr}  CPU-4 ${cpu cpu4}% ${cpubar cpu4 5,50} ─┼─ ${freq_g 4} Ghz │  │
-    ${alignr}  CPU-5 ${cpu cpu5}% ${cpubar cpu5 5,50} ─┼─ ${freq_g 5} Ghz │  │
-    ${alignr}  CPU-6 ${cpu cpu6}% ${cpubar cpu6 5,50} ─┼─ ${freq_g 6} Ghz │  │
-    ${alignr}  CPU-7 ${cpu cpu7}% ${cpubar cpu7 5,50} ─┼─ ${freq_g 7} Ghz │  │
-    ${alignr}  CPU-8 ${cpu cpu8}% ${cpubar cpu8 5,50} ─┴─ ${freq_g 8} Ghz │  │
-    ${alignr}  │  │
-    ${alignr}  ${color1}[${color} $loadavg ${color1}]${color} load ─┤  │
-    ${alignr}  ${color2}[${color} ${top name 1}  ${top cpu 1} ${color2}]${color} ─┤  │  │
-    ${alignr}  ${color2}[${color} ${top name 2}  ${top cpu 2} ${color2}]${color} ─┤  │  │
-    ${alignr}  ${color2}[${color} ${top name 3}  ${top cpu 3} ${color2}]${color} ─┤  │  │
-    ${alignr}  ${color2}[${color} ${top name 4}  ${top cpu 4} ${color2}]${color} ─┤  │  │
-    ${alignr}  ${color2}[${color} ${top name 5}  ${top cpu 5} ${color2}]${color} ─┘  │  │
-    ${alignr}  │  │
-    ${alignr}  processes ─┤  │
-    ${alignr}  ${color1}[${color} $processes/$running_processes ${color1}]${color}  total/running ─┘  │  │
-    ${alignr}  ${color1}[${color} ${exec sensors | grep Package| cut -c 16-22}    ${color1}]${color}       temperature ─┘  │
+    ${alignr}  ┌── system ─┬─┤
+    ${alignr}  ${color2}CPU-0 ${cpu cpu0}% ${cpubar cpu0 5,50}${color}${alignr} ─┼─ ${freq_g 0} Ghz │ │
+    ${alignr}  CPU-1 ${cpu cpu1}% ${cpubar cpu1 5,50} ─┼─ ${freq_g 1} Ghz │ │
+    ${alignr}  CPU-2 ${cpu cpu2}% ${cpubar cpu2 5,50} ─┼─ ${freq_g 2} Ghz │ │
+    ${alignr}  CPU-3 ${cpu cpu3}% ${cpubar cpu3 5,50} ─┼─ ${freq_g 3} Ghz │ │
+    ${alignr}  CPU-4 ${cpu cpu4}% ${cpubar cpu4 5,50} ─┼─ ${freq_g 4} Ghz │ │
+    ${alignr}  CPU-5 ${cpu cpu5}% ${cpubar cpu5 5,50} ─┼─ ${freq_g 5} Ghz │ │
+    ${alignr}  CPU-6 ${cpu cpu6}% ${cpubar cpu6 5,50} ─┼─ ${freq_g 6} Ghz │ │
+    ${alignr}  CPU-7 ${cpu cpu7}% ${cpubar cpu7 5,50} ─┼─ ${freq_g 7} Ghz │ │
+    ${alignr}  CPU-8 ${cpu cpu8}% ${cpubar cpu8 5,50} ─┴─ ${freq_g 8} Ghz │ │
+    ${alignr}  │ │
+    ${alignr}  ${color1}[${color} $loadavg ${color1}]${color} load ─┬─┤ │
+    ${alignr}  ${color2}[${color} ${top name 1}  ${top cpu 1} ${color2}]${color} ─┤ │ │
+    ${alignr}  ${color2}[${color} ${top name 2}  ${top cpu 2} ${color2}]${color} ─┤ │ │
+    ${alignr}  ${color2}[${color} ${top name 3}  ${top cpu 3} ${color2}]${color} ─┤ │ │
+    ${alignr}  ${color2}[${color} ${top name 4}  ${top cpu 4} ${color2}]${color} ─┤ │ │
+    ${alignr}  ${color2}[${color} ${top name 5}  ${top cpu 5} ${color2}]${color} ─┘ │ │
+    ${alignr}  │ │
+    ${alignr}  ${color1}[${color} $processes/$running_processes ${color1}]${color}  total/running ─┤ │
+    ${alignr}  ${color1}[${color} ${exec sensors | grep Package| cut -c 16-22}    ${color1}]${color}    temperature ─┘ │
     ${alignr}  │
-    ${alignr}  resources ─┤
-    ${alignr}  ${color1}[${color} $diskio_read / $diskio_write ${color1}]${color}  read/write ─┤  │
-    ${alignr}  ram ─┤  │
-    ${alignr}  $mem / $memmax ${color1}[${color} $memperc% ${color1}]${color} used ┘ │  │
-    ${alignr}  ${membar 8,100} ───┤  │  │
-    ${alignr}  ${color2}[${color} ${top_mem name 1}  ${top_mem mem 1} ${color2}]${color} ─┤  │  │
-    ${alignr}  ${color2}[${color} ${top_mem name 2}  ${top_mem mem 2} ${color2}]${color} ─┤  │  │
-    ${alignr}  ${color2}[${color} ${top_mem name 3}  ${top_mem mem 3} ${color2}]${color} ─┤  │  │
-    ${alignr}  ${color2}[${color} ${top_mem name 4}  ${top_mem mem 4} ${color2}]${color} ─┤  │  │
-    ${alignr}  ${color2}[${color} ${top_mem name 5}  ${top_mem mem 5} ${color2}]${color} ─┘  │  │
-    ${alignr}  │  │
-    ${alignr}  $swap/$swapmax ${swapbar 5,100} swap ─┤  │
-    ${alignr}  ${fs_used /}/${fs_size /} ${fs_bar 5,100 /} root ─┘  │
+    ${alignr}  resources ─┬─┤
+    ${alignr}  ${color1}[${color} $diskio_read / $diskio_write ${color1}]${color}  read/write ─┤ │
+    ${alignr}  ram ─┤ │
+    ${alignr}  $mem / $memmax ${color1}[${color} $memperc% ${color1}]${color} used ─┤ │ │
+    ${alignr}  ${membar 8,100} ───┤ │ │
+    ${alignr}  ${color2}[${color} ${top_mem name 1}  ${top_mem mem 1} ${color2}]${color} ─┤ │ │
+    ${alignr}  ${color2}[${color} ${top_mem name 2}  ${top_mem mem 2} ${color2}]${color} ─┤ │ │
+    ${alignr}  ${color2}[${color} ${top_mem name 3}  ${top_mem mem 3} ${color2}]${color} ─┤ │ │
+    ${alignr}  ${color2}[${color} ${top_mem name 4}  ${top_mem mem 4} ${color2}]${color} ─┤ │ │
+    ${alignr}  ${color2}[${color} ${top_mem name 5}  ${top_mem mem 5} ${color2}]${color} ─┘ │ │
+    ${alignr}  │ │
+    ${alignr}  $swap/$swapmax ${swapbar 5,100} swap ─┤ │
+    ${alignr}  ${fs_used /}/${fs_size /} ${fs_bar 5,100 /} root ─┘ │
     ${alignr}  │
-    ${alignr}  ${addr enp8s0}: enp8s0 net ─┤
-    ${alignr}  ${upspeed enp8s0} k/s ${upspeedgraph enp8s0 8,100 DC143C DC143C}   up ─┤  │
-    ${alignr}  ${downspeed enp8s0} k/s ${downspeedgraph enp8s0 8,100 DC143C DC143C} down ─┤  │
-    ${alignr}  ${addr wlp9s0}: wlp9s0 ─┤  │
-    ${alignr}  ${upspeed wlp9s0} k/s ${upspeedgraph wlp9s0 8,100 DC143C DC143C}   up ─┤  │
-    ${alignr}  ${downspeed wlp9s0} k/s ${downspeedgraph wlp9s0 8,100 DC143C DC143C} down ─┤  │
-    ${alignr}  [ ${tcp_portmon 32768 61000 count} ] out / remote ─┤  │
-    ${alignr}  [ ${tcp_portmon 1 65535 count} ]  connections ─┤  │
-    ${alignr}  [ ${tcp_portmon 1 32767 count} ]  in / locale ─┘  │
+    ${alignr}  ${addr enp8s0}: enp8s0 net ─┬─┤
+    ${alignr}  ${upspeed enp8s0} k/s ${upspeedgraph enp8s0 8,100 DC143C DC143C}   up ─┤ │
+    ${alignr}  ${downspeed enp8s0} k/s ${downspeedgraph enp8s0 8,100 DC143C DC143C} down ─┤ │
+    ${alignr}  ${addr wlp9s0}: wlp9s0 ─┤ │
+    ${alignr}  ${upspeed wlp9s0} k/s ${upspeedgraph wlp9s0 8,100 DC143C DC143C}   up ─┤ │
+    ${alignr}  ${downspeed wlp9s0} k/s ${downspeedgraph wlp9s0 8,100 DC143C DC143C} down ─┤ │
+    ${alignr}  [ ${tcp_portmon 32768 61000 count} ] out / remote ─┤ │
+    ${alignr}  [ ${tcp_portmon 1 65535 count} ]  connections ─┤ │
+    ${alignr}  [ ${tcp_portmon 1 32767 count} ]  in / locale ─┘ │
     ${alignr}  Gpu utilisation ─┘
     ${execpi 10 nvidia-smi | grep Default | awk '{print $3"\t"$9" / "$11}' | sed 's/^/${goto 90}/g'}
 
