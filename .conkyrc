@@ -70,7 +70,7 @@ conky.text = [[
     ${alignr}  │
     ${alignr}  resources ─┬─┤
     ${alignr}  ${color1}[${color} $diskio_read / $diskio_write ${color1}]${color}  read/write ─┤ │
-    ${alignr}  ram ─┤ │
+    ${alignr}  ram ─┬─┤ │
     ${alignr}  $mem / $memmax ${color1}[${color} $memperc% ${color1}]${color} used ─┤ │ │
     ${alignr}  ${membar 8,100} ───┤ │ │
     ${alignr}  ${color2}[${color} ${top_mem name 1}  ${top_mem mem 1} ${color2}]${color} ─┤ │ │
