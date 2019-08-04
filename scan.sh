@@ -17,7 +17,7 @@
 #     IdentityFile ~/.ssh/my_secret_key
 
 
-[ -f ~/.ssh/config ] && ips=`for ip in $(cat ~/.ssh/config | grep Name | awk '{print $2}'); do (ping -c 1 -w 1 $ip &>/dev/null; echo "$?-$ip" ) & done`;wait
+[ -f ~/.ssh/config ] && ips=`for ip in $(cat ~/.ssh/config | grep Name | awk '{print $2}'); do (ping -c 1 -w 2 $ip &>/dev/null; echo "$?-$ip" ) & done`;wait
 
 print_res(){
     for ip in $ips; do 
