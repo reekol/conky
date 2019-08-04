@@ -1,6 +1,23 @@
 #/bin/bash
 
-[ -f ~/.ssh/config ] && ips=`for ip in $(cat ~/.ssh/config | grep Name | cut -d' ' -f6); do (ping -c 1 -w 1 $ip &>/dev/null; echo "$?-$ip" ) & done`;wait
+# Example ./.ssh/config contents
+#
+# Host niki-remote-app-1
+#     HostName 192.168.100.1
+#     ForwardAgent yes
+#     User root
+#     Port 22
+#     IdentityFile ~/.ssh/my_secret_key
+# 
+# Host niki-remote-app-2
+#     HostName 192.168.100.2
+#     ForwardAgent yes
+#     User root
+#     Port 22
+#     IdentityFile ~/.ssh/my_secret_key
+
+
+[ -f ~/.ssh/config ] && ips=`for ip in $(cat ~/.ssh/config | grep Name | awk '{print $2}'); do (ping -c 1 -w 1 $ip &>/dev/null; echo "$?-$ip" ) & done`;wait
 
 print_res(){
     for ip in $ips; do 
