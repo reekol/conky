@@ -14,6 +14,6 @@ res=$(print_res | sort -r | column -t)
 #echo -e $res | grep -v -E '^\$\{color0\}(.*)(sofia)' | column -t
 echo -e $res | column -t
 #offline=$(echo -e $res | grep -v -E '^\$\{color0\}' | grep color1 | wc -l)
-#if [ $offline -gt '0' ]; then play /usr/share/sounds/KDE-Im-Connection-Lost.ogg ; fi
+#[ $offline -gt '0' ] && play /usr/share/sounds/Oxygen-K3B-Finish-Success.ogg
 
 
