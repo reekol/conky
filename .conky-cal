@@ -42,6 +42,6 @@ conky.text = [[
                                                                   ┌─────────────────────┐
                                                                   | ${execpi 1 date +'%Y-%m-%d %H:%M:%S'} |                                                    
                                                 ................  └─────────────────────┘
-${execpi 60 d=$(date +%d) && ncal -3 -M |  sed "s/\ $d/\$\{color2\}\ $d\$\{color\}/g" | sed 's/^/${goto 180}/g'}
+${execpi 60 d=$(date +%-d) && ncal -3 -M |  sed "s/\ $d /\$\{color2\}\ $d \$\{color\}/g" | sed 's/^/${goto 180}/g'}
                                                 ................
 ]]

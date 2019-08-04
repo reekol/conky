@@ -28,16 +28,17 @@ settings_table = {
         radius=50,
         thickness=15,
         start_angle=0,
-        end_angle=270
+        end_angle=270,
+        sectors=10
     },
     {
         title="Ping to gateway",
         text_suffix='/50 ms',
         cmd="ping -w 2 -c 1 $(ip route | awk '/default/ { print $3 }') | grep ttl | cut -d '=' -f 4 | awk '{print $1}' | cut -d'.' -f1",
 
-              x=265,
-         text_x=235,
-        title_x=210,
+              x=215,
+         text_x=185,
+        title_x=160,
 
               y=65,
          text_y=67,
@@ -51,16 +52,17 @@ settings_table = {
         radius=50,
         thickness=15,
         start_angle=0,
-        end_angle=270
+        end_angle=270,
+        sectors=10
     },
     {
         title="Battery status.",
         text_suffix='/100%',
         cmd="cat /sys/class/power_supply/BAT*/capacity",
 
-              x=465,
-         text_x=435,
-        title_x=410,
+              x=365,
+         text_x=335,
+        title_x=310,
 
               y=65,
          text_y=67,
@@ -74,7 +76,8 @@ settings_table = {
         radius=50,
         thickness=15,
         start_angle=0,
-        end_angle=270
+        end_angle=270,
+        sectors=10
     },
 
 }
@@ -92,19 +95,23 @@ function draw_ring(cr,t,pt)
     local angle_0=sa*(2*math.pi/360)-math.pi/2
     local angle_f=ea*(2*math.pi/360)-math.pi/2
     local t_arc=t*(angle_f-angle_0)
-
+    local sector_size=((ea-sa)/pt['sectors'])
     -- Draw background ring
 
+    for i=0,pt['sectors'] do
+--        local sector_start = (i*sector_size)
+    end
+    
     cairo_arc(cr,xc,yc,ring_r,angle_0,angle_f)
     cairo_set_source_rgba(cr,rgb_to_r_g_b(bgc,bga))
     cairo_set_line_width(cr,ring_w)
     cairo_stroke(cr)
 
     -- Draw indicator ring
-
     cairo_arc(cr,xc,yc,ring_r,angle_0,angle_0+t_arc)
     cairo_set_source_rgba(cr,rgb_to_r_g_b(fgc,fga))
     cairo_stroke(cr)        
+
 end
 
 function conky_lua_rings()

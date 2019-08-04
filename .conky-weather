@@ -1,9 +1,10 @@
 conky.config = {
     own_window_type='normal',
     alignment='top_left',
-    gap_x=600,
-    gap_y=50,
+    gap_x=20,
+    gap_y=30,
     maximum_width=1890,
+    maximum_height=900,
     background=true,
     use_xft=true,
     font='Monospace:size=7',
@@ -33,11 +34,10 @@ conky.config = {
     color1='cyan',
     color2='DC143C',
     color3='yellow',
-    lua_draw_hook_pre='ring_stats',
     pad_percents=3,
 }
 
 conky.text = [[
-${execpi 1200 bash ~/.conky/weather.sh }
-
+${execpi   1200 bash ~/.conky/weather2.sh }
+                                                                                              *
 ]]
