@@ -17,6 +17,9 @@
 #     IdentityFile ~/.ssh/my_secret_key
 
 
+lastOffline=$(cat $PWD/cache/scan.offline.log)
+lastHash=$lastOffline #$(echo "$lastOffline" | md5sum -)
+
 [ -f ~/.ssh/config ] && ips=`for ip in $(cat ~/.ssh/config | grep Name | awk '{print $2}'); do (ping -c 1 -w 2 $ip &>/dev/null; echo "$?-$ip" ) & done`;wait
 
 print_res(){
@@ -28,9 +31,17 @@ print_res(){
 }
 
 res=$(print_res | sort -r | column -t)
-#echo -e $res | grep -v -E '^\$\{color0\}(.*)(sofia)' | column -t
-echo -e $res | column -t
-#offline=$(echo -e $res | grep -v -E '^\$\{color0\}' | grep color1 | wc -l)
-#[ $offline -gt '0' ] && play /usr/share/sounds/Oxygen-K3B-Finish-Success.ogg
 
+echo -e $res | column -t
+offline="$(echo  "$res" | grep -v -E '^\$\{color0\}' | grep color1 | awk '{print $3}')"
+offlineHash=$offline #$(echo "$offline" | md5sum - )
+if [ "$lastHash" != "$offlineHash" ]; then
+    echo "$offline" > $PWD/cache/scan.offline.log
+    n=$(echo "$offline" | wc -l);
+    if [ $n -eq "0" ]; then
+        (echo "All servers online" |  espeak -p 99 -s 150) &
+    else
+        (echo "$n servers offline" |  espeak -p 99 -s 150) &
+    fi
+fi
 
