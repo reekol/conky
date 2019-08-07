@@ -16,7 +16,6 @@
 #     Port 22
 #     IdentityFile ~/.ssh/my_secret_key
 
-
 lastOffline=$(cat $PWD/cache/scan.offline.log)
 lastHash=$lastOffline #$(echo "$lastOffline" | md5sum -)
 
@@ -41,7 +40,14 @@ if [ "$lastHash" != "$offlineHash" ]; then
     if [ $n -eq "0" ]; then
         (echo "All servers online" |  espeak -p 99 -s 150) &
     else
-        (echo "$n servers offline" |  espeak -p 99 -s 150) &
+        if [ $n -lt "3" ]; then
+            if [ $n -eq "1" ]; then
+                (echo "$offline, is offline" |  espeak -p 99 -s 150) &
+            else
+                (echo "$n servers, $offline, are offline" |  espeak -p 99 -s 150) &
+            fi
+        else
+            (echo "$n servers offline" |  espeak -p 99 -s 150) &
+        fi
     fi
 fi
-
