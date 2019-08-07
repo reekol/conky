@@ -1,6 +1,5 @@
 
-data=$(curl -s 'https://www.yahoo.com/news/weather/bulgaria/sofiya-grad/sofia-12810530' -H 'authority: www.yahoo.com' -H 'cache-control: max-age=0' -H 'upgrade-insecure-requests: 1' -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.87 Safari/537.36' -H 'sec-fetch-mode: navigate' -H 'sec-fetch-user: ?1' -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3' -H 'sec-fetch-site: none' -H 'referer: https://www.google.com/' -H 'accept-encoding: gzip, deflate, br' -H 'accept-language: en-US,en;q=0.9,bg-BG;q=0.8,bg;q=0.7,ru;q=0.6' -H 'cookie: weather=unit%3Dmetric; thamba=2; APID=UP7a1b1400-d568-11e8-9d1f-02c3d9916472; GUCS=ASYt3dSG; GUC=AQABAQFdRc5eMEIengRd&s=AQAAADHu-Pu-&g=XUSKGA; APIDTS=1564772988; B=6ipq01pdt4a8f&b=3&s=0d' --compressed)
-echo $data > $PWD/cache/wtr.cache
+data=$(curl -s 'https://www.yahoo.com/news/weather/bulgaria/sofiya-grad/sofia-12810530' -H 'authority: www.yahoo.com' -H 'cache-control: max-age=0' -H 'upgrade-insecure-requests: 1' -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.87 Safari/537.36' -H 'sec-fetch-mode: navigate' -H 'sec-fetch-user: ?1' -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3' -H 'sec-fetch-site: none' -H 'referer: https://www.google.com/' -H 'accept-encoding: gzip, deflate, br' -H 'accept-language: en-US,en;q=0.9,bg-BG;q=0.8,bg;q=0.7,ru;q=0.6' -H 'cookie: weather=unit%3Dmetric; thamba=2; APID=UP7a1b1400-d568-11e8-9d1f-02c3d9916472; GUCS=ASYt3dSG; GUC=AQABAQFdRc5eMEIengRd&s=AQAAADHu-Pu-&g=XUSKGA; APIDTS=1564772988; B=6ipq01pdt4a8f&b=3&s=0d' --compressed) && echo $data > $PWD/cache/wtr.cache
 data=$(cat $PWD/cache/wtr.cache)
 
 getPos(){
@@ -39,8 +38,26 @@ getToday(){
 
 
     ) | sed 's/<!--[^>]*-->/ /g' | sed 's/<[^>]*>//gi' | grep -v -e '^[[:space:]]*$' | tr '="' ' ' | awk '{
-        print "${goto 40}${voffset 6}${font Monospace:size=7}"$2$3" "$4$5" "$7" ${image "$8" -s 20x20 -p 0,"((NR-1) * 18)" -f 86400} "
+        print "${goto 40}${voffset 5}${font Monospace:size=7}"$2$3" "$4$5" "$7" ${image "$8" -s 20x20 -p 0,"((NR-1) * 18)" -f 86400} "
     }' | column -t
 }
 
-getToday
+getForecast(){
+    local table=$(substr "$data" 'class="forecast"' 1 'id="weather-precipitation"' 1)
+    (
+    for i in $(seq 1 10); do
+        local row=$(substr "$table" 'role="row"' $i '</div>"' $((i+2)) )
+        local day=$(echo "<weather2 $row>" |  sed 's/<!--[^>]*-->/ /g' |  sed 's/<[^>]*>//gi' | cut -d' ' -f1)
+        local imgCond=$(substr "$row" 'src="' 1 'data-reactid=' 5 | cut -d'"' -f2 ) && imgCond=$(urlCache $imgCond)
+        local imgDrop=$(substr "$row" 'src="' 2 'data-reactid=' 8 | cut -d'"' -f2 ) && imgDrop=$(urlCache $imgDrop)
+        local dropText=$(substr "$row" '<img ' 2 '</span>' 4 | sed 's/<[^>]*>//gi'  )
+        local descr=$(echo "<i $(substr "$row" 'class="day-part' 1 '</div>' 2)" | sed 's/<!--[^>]*-->/ /g' | sed 's/<[^>]*>//gi')
+        local temps=$(echo "< $(substr "$row" 'class="D(ib) Va(m) W(1/4) Ta(end)"' 1 'class="day-part' 1)>" | sed 's/<!--[^>]*-->//g' | sed 's/<[^>]*>/ /gi' )
+        echo '${goto 40}${voffset 5}${font Monospace:size=7}' $dropText ' '  $day '-' $temps ': ' $descr '${image '$imgCond' -s 20x20 -p 0,' $(( (i-1) * 18 ))' -f 86400} ${image '$imgDrop' -s 14x14 -p 25,'$(( (i-1) * 18 ))' -f 86400}'
+#        echo  -e "\n$day - $temps\n$imgCond\n$imgDrop $dropText\n$descr"
+    done
+    )
+
+}
+
+getForecast
