@@ -1,5 +1,5 @@
 
-sudo killall conky
+sudo killall -9 conky
 
 #sed -i "s/enp[0-9]s0/$(ip link | awk -F: '$0 !~ "lo|vir|wl|dock|^[^0-9]"{print $2;getline}')/gi" ./.conkyrc
 #sed -i "s/wlp[0-9]s0/$(iw dev | grep face | cut -d' ' -f2)/gi" ./.conkyrc
