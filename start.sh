@@ -18,4 +18,5 @@ sleep 2
      conky -c ./.conky-rings &&
      conky -c ./.conky-weather &&
      conky -c ./.conky-hosts &&
-sudo conky -c ./.conky-more
+sudo conky -c ./.conky-more &&
+     echo $?
