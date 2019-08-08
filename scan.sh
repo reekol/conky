@@ -16,11 +16,11 @@
 #     Port 22
 #     IdentityFile ~/.ssh/my_secret_key
 
-
+LEVEL=0
 lastOffline=$(cat $PWD/cache/scan.offline.log)
 lastHash=$lastOffline #$(echo "$lastOffline" | md5sum -)
 
-[ -f ~/.ssh/config ] && ips=`for ip in $(cat ~/.ssh/config | grep Name | awk '{print $2}'); do (ping -c 1 -w 2 $ip &>/dev/null; echo "$?-$ip" ) & done`;wait
+[ -f ~/.ssh/config ] && ips=`for ip in $(cat ~/.ssh/config | grep Name | awk '{print $2}'); do (ping -c 1 -w 4 $ip &>/dev/null; echo "$?-$ip" ) & done`;wait
 
 print_res(){
     for ip in $ips; do 
@@ -39,16 +39,16 @@ if [ "$lastHash" != "$offlineHash" ]; then
     echo "$offline" > $PWD/cache/scan.offline.log
     n=$(echo "$offline" | wc -l);
     if [ $n -eq "0" ]; then
-        (echo "All servers online" |  espeak -p 99 -s 150) &
+        (echo "All servers online" |  espeak -a $LEVEL -p 99 -s 150) &
     else
         if [ $n -lt "3" ]; then
             if [ $n -eq "1" ]; then
-                (echo "$offline, is offline" |  espeak -a 30 -p 99 -s 150) &
+                (echo "$offline, is offline" |  espeak -a $LEVEL -p 99 -s 150) &
             else
-                (echo "$n servers, $offline, are offline" |  espeak -a 30 -p 99 -s 150) &
+                (echo "$n servers, $offline, are offline" |  espeak -a $LEVEL -p 99 -s 150) &
             fi
         else
-            (echo "$n servers offline" |  espeak -p 99 -s 150) &
+            (echo "$n servers offline" |  espeak -a $LEVEL -p 99 -s 150) &
         fi
     fi
 fi

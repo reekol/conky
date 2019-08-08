@@ -38,7 +38,7 @@ getToday(){
 
 
     ) | sed 's/<!--[^>]*-->/ /g' | sed 's/<[^>]*>//gi' | grep -v -e '^[[:space:]]*$' | tr '="' ' ' | awk '{
-        print "${goto 40}${voffset 5}${font Monospace:size=7}"$2$3" "$4$5" "$7" ${image "$8" -s 20x20 -p 0,"((NR-1) * 18)" -f 86400} "
+        print "${goto 40}${voffset 6}${font Monospace:size=7}"$2$3" "$4$5" "$7" ${image "$8" -s 20x20 -p 0,"((NR-1) * 18)" -f 86400} "
     }' | column -t
 }
 
@@ -53,7 +53,7 @@ getForecast(){
         local dropText=$(substr "$row" '<img ' 2 '</span>' 4 | sed 's/<[^>]*>//gi'  )
         local descr=$(echo "<i $(substr "$row" 'class="day-part' 1 '</div>' 2)" | sed 's/<!--[^>]*-->/ /g' | sed 's/<[^>]*>//gi')
         local temps=$(echo "< $(substr "$row" 'class="D(ib) Va(m) W(1/4) Ta(end)"' 1 'class="day-part' 1)>" | sed 's/<!--[^>]*-->//g' | sed 's/<[^>]*>/ /gi' )
-        echo '${goto 50}${voffset 5}${font Monospace:size=7}'$dropText'|'$day'|'$temps'|'$descr'${image '$imgCond' -s 20x20 -p 0,' $(( 435 + (i-1) * 18 ))' -f 86400} ${image '$imgDrop' -s 14x14 -p 25,'$(( 435 + (i-1) * 18 ))' -f 86400}'
+        echo '${goto 50}${voffset 6}${font Monospace:size=7}'$dropText'|'$day'|'$temps'|'$descr'${image '$imgCond' -s 20x20 -p 0,' $(( 435 + (i-1) * 18 ))' -f 86400} ${image '$imgDrop' -s 14x14 -p 25,'$(( 435 + (i-1) * 18 ))' -f 86400}'
 #        echo  -e "\n$day - $temps\n$imgCond\n$imgDrop $dropText\n$descr"
     done
     ) | column -t -s '|'
