@@ -28,7 +28,7 @@ conky.config = {
     override_utf8_locale=true,
     use_spacer='right',
     own_window_argb_visual=true,
-    default_color='white',
+    default_color='yellow',
     color0='green',
     color1='cyan',
     color2='DC143C',
@@ -38,10 +38,10 @@ conky.config = {
     lua_draw_hook_pre='clock_rings'
 }
 
-conky.text = [[
-                                                                  ┌─────────────────────┐
-                                                                  | ${execpi 1 date +'%Y-%m-%d %H:%M:%S'} |                                                    
-                                                ................  └─────────────────────┘
-${execpi 60 d=$(date +%-d) && ncal -3 -M |  sed "s/\ $d /\$\{color2\}\ $d \$\{color\}/g" | sed 's/^/${goto 180}/g'}
-                                                ................
+conky.text = [[${color2}
+                                                                          ┌─────────────────────┐
+                                                                          | ${execpi 1 date +'%Y-%m-%d %H:%M:%S'} |                                                    
+                                                        ${color}................${color2}  └─────────────────────┘${color}
+${execpi 60 d=$(date +%-d) && ncal -3 -M |  sed "s/\ $d /\$\{color2\}\ $d \$\{color\}/g" | sed 's/^/${goto 220}/g'}
+                                                        ................
 ]]
