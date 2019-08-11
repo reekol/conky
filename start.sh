@@ -1,3 +1,4 @@
+trap "kill 0" EXIT
 
 sudo killall conky
 
@@ -20,5 +21,9 @@ sleep 2
      conky -c ./.conky-cal &&
      conky -c ./.conky-hosts &&
 sudo conky -c ./.conky-more &&
-sudo ./planb.sh &&
      echo $?
+
+(
+    sudo ./planb.sh &
+    bash ./lemonbar.sh 
+); await
