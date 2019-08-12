@@ -9,7 +9,7 @@ nk_clock() {
 
 
 nk_battery() {
-    	cat /sys/class/power_supply/BAT1/capacity
+    	cat /sys/class/power_supply/BAT*/capacity
 }
 
 nk_essid(){
@@ -19,13 +19,13 @@ nk_essid(){
 nk_shortcut(){
        echo  "%{A:google-chrome --incognito https\://seqr.link &:}[ SeQR ]%{A}"
        echo  "%{A:google-chrome https\://github.com/reekol/conky &:}[ GitHub ReeKol ]%{A}"
-       echo  "%{A:xterm -e htop &:}[ Htop ]%{A}"
+       echo  "%{A:xterm -geometry 200x50+350+200 -e htop &:}[ Htop ]%{A}"
 }
 
 nk_info(){
 while true; do
 	BAR_INPUT="Batery: $(nk_battery)%% TIME : $(nk_clock)  ESSID: $(nk_essid)"
-    	echo "  "$BAR_INPUT" "$(nk_shortcut)
+    	echo -e "  "$BAR_INPUT" %{r}"$(nk_shortcut)"%{r}"
     	sleep 1
  done 
  }
