@@ -4,7 +4,7 @@ conky.config = {
     gap_x=20,
     gap_y=30,
     maximum_width=1890,
-    maximum_height=900,
+    maximum_height=1200,
     background=true,
     use_xft=true,
     font='Monospace:size=7',
@@ -39,5 +39,10 @@ conky.config = {
 
 conky.text = [[
 ${execpi   1200 bash ~/.conky/weather2.sh }
-                                                                                              *
+
+
+
+
+
+*
 ]]

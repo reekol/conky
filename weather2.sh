@@ -60,6 +60,18 @@ getForecast(){
 
 }
 
+getNow(){
+    local cwtr="<weather2 $(substr "$data" 'data-type="temperature"' 1 'by chojaein on' 1 )"
+    local imgCond=$(substr "$cwtr" 'src="' 1 '" data-reactid=' 5 | cut -d'"' -f2) && imgCond=$(urlCache $imgCond)
+    local descr=$(substr "$cwtr" '<span class="description' 1 '</span></div><div class="high-low' 1 | sed 's/<[^>]*>//gi')
+    local trange=$(substr "$cwtr" '<div class="high-low ' 1 '<div class="now' 1 | sed 's/<[^>]*>//gi')
+    local now=$(substr "$cwtr" '<div class="now' 1 '<div class="credit' 1 | sed 's/<[^>]*>//gi' | tr 'F' ' ')
+    echo "\${voffset -100}"
+    echo '${image '$imgCond' -s 50x50 -p 780,520 -f 86400}'
+#    echo "\${goto 960}\${font Monospace:size=15}$now\${font}"
+    echo "\${goto 785}\${voffset 55}$descr $trange"
+    echo "\${goto 785}\${font Monospace:size=15}$now\${font}"
+}
 getToday
-
 getForecast
+getNow
