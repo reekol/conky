@@ -1,7 +1,7 @@
 conky.config = {
     own_window_type='normal',
     alignment='top_left',
-    gap_x=1480,
+    gap_x=1500,
     gap_y=20,
     maximum_width=300,
     background=true,
@@ -83,7 +83,7 @@ ${alignr}${downspeed wlp9s0} k/s ${downspeedgraph wlp9s0 8,70 DC143C DC143C} dow
 [ ${tcp_portmon 1 65535 count} ] ───── connections  ───────┤ │
 [ ${tcp_portmon 32768 61000 count} ] ───── out / remote ───────┤ │
 [ ${tcp_portmon 1 32767 count} ] ───── in  / locale ───────┘ │
-${alignr}Gpu utilisation ─┘
-${execpi 10 nvidia-smi | grep Default | awk '{print $3"\t"$9" / "$11}' }
+${alignr}Gpu utilisation ─┬─┤
+${execpi 10 nvidia-smi | grep Default | awk '{print "["$3"]${alignr}"$9" / "$11" ─┤ │"}' }
 
 ]]
