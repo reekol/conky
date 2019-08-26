@@ -8,7 +8,7 @@ conky.config = {
     use_xft=true,
     font='Monospace:size=8',
     xftalpha=1,
-    update_interval=1.0,
+    update_interval=5.0,
     total_run_times=0,
     own_window=true,
     own_window_transparent=true,
@@ -35,8 +35,11 @@ conky.config = {
     lua_draw_hook_pre='ring_stats',
     pad_percents=3,
     lua_load='~/.conky/lua_rings_2.lua',
-    lua_draw_hook_pre='lua_rings'
+    lua_draw_hook_pre='lua_rings',
 }
+
+
+
 
 conky.text = [[
 
@@ -50,8 +53,14 @@ conky.text = [[
 
 
 
-
 ${execpi 2 bash ~/.conky/getPlayerInfo.sh }
+
+
+
+
+
+
+
 
 
 
