@@ -1,10 +1,5 @@
 
-getConfig () { 
-    local str=$(cat $PWD/.config | awk '{print $1" "$2}' | grep $1 | cut -d' ' -f2 )
-    [ $2 ] && str=$(echo $str | sed -e "s/$2/$3/g")
-    echo $str
-}
-
+source $PWD/config.sh
 data=$(curl -s "https://www.yahoo.com/news/weather/$(getConfig c_weather_loc)" -H 'authority: www.yahoo.com' -H 'cache-control: max-age=0' -H 'upgrade-insecure-requests: 1' -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.87 Safari/537.36' -H 'sec-fetch-mode: navigate' -H 'sec-fetch-user: ?1' -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3' -H 'sec-fetch-site: none' -H 'referer: https://www.google.com/' -H 'accept-encoding: gzip, deflate, br' -H 'accept-language: en-US,en;q=0.9,bg-BG;q=0.8,bg;q=0.7,ru;q=0.6' -H 'cookie: weather=unit%3Dmetric; thamba=2; APID=UP7a1b1400-d568-11e8-9d1f-02c3d9916472; GUCS=ASYt3dSG; GUC=AQABAQFdRc5eMEIengRd&s=AQAAADHu-Pu-&g=XUSKGA; APIDTS=1564772988; B=6ipq01pdt4a8f&b=3&s=0d' --compressed) && echo $data > $PWD/cache/wtr.cache
 data=$(cat $PWD/cache/wtr.cache)
 

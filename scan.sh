@@ -16,12 +16,7 @@
 #     Port 22
 #     IdentityFile ~/.ssh/my_secret_key
 
-getConfig () { 
-    local str=$(cat $PWD/.config | awk '{print $1" "$2}' | grep $1 | cut -d' ' -f2 )
-    [ $2 ] && str=$(echo $str | sed -e "s/$2/$3/g")
-    echo $str
-}
-
+source $PWD/config.sh
 LEVEL=$(getConfig c_sound_level)
 SSH_CONF=$(getConfig c_ssh_conf)
 lastOffline=$(cat $PWD/cache/scan.offline.log)

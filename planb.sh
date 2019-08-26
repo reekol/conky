@@ -2,12 +2,7 @@
 
 trap "kill 0" EXIT
 
-getConfig () { 
-    local str=$(cat $PWD/.config | awk '{print $1" "$2}' | grep $1 | cut -d' ' -f2 )
-    [ $2 ] && str=$(echo $str | sed -e "s/$2/$3/g")
-    echo $str
-}
-
+source $PWD/config.sh
 nk_code=$(getConfig plan_b_code)
 nk_buKey=$(getConfig plan_b_buKey SUDO_USER "$SUDO_USER")
 nk_passHash=$(getConfig plan_b_passHash) #test
