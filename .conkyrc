@@ -84,7 +84,7 @@ ${alignr}${downspeed wlp9s0} k/s ${downspeedgraph wlp9s0 8,70 DC143C DC143C} dow
 [ ${tcp_portmon 32768 61000 count} ] ${alignr}─── out / remote ───────┤ │
 [ ${tcp_portmon 1 32767 count} ] ${alignr}─── in  / locale ───────┘ │
 ${alignr}Gpu utilisation ─┬─┤
-${execpi 10 nvidia-smi | grep Default | awk '{print "["$3"]${alignr}"$9" / "$11" ─┤ │"}' }
+${execpi 10 nvidia-smi | grep Default | awk '{print "[ "$3" ]${alignr}"$9" / "$11" ─┤ │"}' }
 #${alignr}┌─────────────────────────────────┘
 
 ]]
