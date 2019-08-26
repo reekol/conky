@@ -16,17 +16,24 @@
 #     Port 22
 #     IdentityFile ~/.ssh/my_secret_key
 
-LEVEL=0
+getConfig () { 
+    local str=$(cat $PWD/.config | awk '{print $1" "$2}' | grep $1 | cut -d' ' -f2 )
+    [ $2 ] && str=$(echo $str | sed -e "s/$2/$3/g")
+    echo $str
+}
+
+LEVEL=$(getConfig c_sound_level)
+SSH_CONF=$(getConfig c_ssh_conf)
 lastOffline=$(cat $PWD/cache/scan.offline.log)
 lastHash=$lastOffline #$(echo "$lastOffline" | md5sum -)
 
-[ -f ~/.ssh/config ] && ips=`for ip in $(cat ~/.ssh/config | grep Name | awk '{print $2}'); do (ping -c 1 -w 4 $ip &>/dev/null; echo "$?-$ip" ) & done`;wait
+[ -f $SSH_CONF ] && ips=`for ip in $(cat $SSH_CONF | grep Name | awk '{print $2}'); do (ping -c 1 -w 4 $ip &>/dev/null; echo "$?-$ip" ) & done`;wait
 
 print_res(){
     for ip in $ips; do 
         local s=`echo $ip | cut -d'-' -f1`
         local i=`echo $ip | cut -d'-' -f2`
-        echo "\n\${color$s}" $i $(cat ~/.ssh/config | grep "$i$" -B2 | grep Host\ | cut -d' ' -f2)
+        echo "\n\${color$s}" $i $(cat $SSH_CONF | grep "$i$" -B2 | grep Host\ | cut -d' ' -f2)
     done
 }
 

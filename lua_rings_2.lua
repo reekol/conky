@@ -10,7 +10,7 @@ settings_table = {
     {
         title="Backup drive Used.",
         text_suffix='%/100%',
-        cmd="df -h | grep sdc | awk '{print $5}' | tr '%' ' '",
+        cmd="df -h | grep $(cat $PWD/.config | grep plan_b_backupDisc | awk '{print $2}') | awk '{print $5}' | tr '%' ' '",
 
               x=65,
          text_x=30,

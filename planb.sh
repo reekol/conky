@@ -2,13 +2,19 @@
 
 trap "kill 0" EXIT
 
-nk_code=97 # Right ctrl
-nk_buKey="/home/$SUDO_USER/.sshs/id_rsa"
-nk_passHash="098f6bcd4621d373cade4e832627b4f6" #test
-nk_eventFile="/dev/input/event4"
-nk_archive="/backup.tar"
-nk_remote="root@seqr.link"
-nk_backupDisc="/dev/sdc"
+getConfig () { 
+    local str=$(cat $PWD/.config | awk '{print $1" "$2}' | grep $1 | cut -d' ' -f2 )
+    [ $2 ] && str=$(echo $str | sed -e "s/$2/$3/g")
+    echo $str
+}
+
+nk_code=$(getConfig plan_b_code)
+nk_buKey=$(getConfig plan_b_buKey SUDO_USER "$SUDO_USER")
+nk_passHash=$(getConfig plan_b_passHash) #test
+nk_eventFile=$(getConfig plan_b_eventFile)
+nk_archive=$(getConfig plan_b_archive)
+nk_remote=$(getConfig plan_b_remote)
+nk_backupDisc=$(getConfig plan_b_backupDisc)
 nk_inputMsg="Type in your password to proceed!"
 
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )/$(basename $0)"
@@ -67,6 +73,8 @@ nk_backup(){
     tar rvf   $nk_archive  /home/$SUDO_USER/.bashrc
     tar rvf   $nk_archive  /home/$SUDO_USER/.conky
     tar rvf   $nk_archive  /home/$SUDO_USER/.hid
+    tar rvf   $nk_archive  /home/$SUDO_USER/Work/automation
+    tar rvf   $nk_archive  /home/$SUDO_USER/Work/remotes
 }
 
 nk_encrypt(){
