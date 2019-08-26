@@ -38,8 +38,8 @@ conky.config = {
 
 conky.text = [[
     ${alignr}${offset -10}${font DejaVu Sans:pixelsize=30}${color2}Ree${color1}Kol${font}${color}
-    ${alignr}${offset -51}▲ 
-    ${alignr}${font monospace:pixelsize=12}${exec date +%H:%M:%S} - utc:${exec date +%H:%M:%S -u} └───────┐${font}
+    ${alignr}${offset -23}▲ 
+    ${alignr}${font monospace:pixelsize=12}${exec date +%H:%M:%S} - utc:${exec date +%H:%M:%S -u} └───┐${font}
     ${alignr}  ${nodename} ─┬─┤
     ${alignr}  ${exec uname -r } :  kernel ─┤ │
     ${alignr}  $machine :    arch ─┤ │
