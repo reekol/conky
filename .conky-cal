@@ -39,9 +39,9 @@ conky.config = {
 }
 
 conky.text = [[${color2}
-                                                                          ┌─────────────────────┐
-                                                                          | ${execpi 1 date +'%Y-%m-%d %H:%M:%S'} |                                                    
-                                                        ${color}................${color2}  └─────────────────────┘${color}
-${execpi 60 d=$(date +%-d) && ncal -3 -M |  sed "s/\ $d /\$\{color2\}\ $d \$\{color\}/g" | sed 's/^/${goto 220}/g'}
-                                                        ................
+                                                                                    ┌─────────────────────┐
+                                                                                    | ${execpi 1 date +'%Y-%m-%d %H:%M:%S'} |                                                    
+                                                                    ${color}................${color2}└─────────────────────┘${color}
+${execpi 60 d=$(date +%-d) && ncal -3 -M |  sed "s/\ $d /\$\{color2\}\ $d \$\{color\}/g" | sed 's/^/${goto 290}/g'}
+                                                                    ................
 ]]
