@@ -80,10 +80,11 @@ ${alignr}${downspeed enp8s0} k/s ${downspeedgraph enp8s0 8,70 DC143C DC143C} dow
 ${alignr}${addr wlp9s0}: wlp9s0 ─┤ │
 ${alignr}${upspeed wlp9s0} k/s ${upspeedgraph wlp9s0 8,70 DC143C DC143C}   up ─┤ │
 ${alignr}${downspeed wlp9s0} k/s ${downspeedgraph wlp9s0 8,70 DC143C DC143C} down ─┤ │
-[ ${tcp_portmon 1 65535 count} ] ───── connections  ───────┤ │
-[ ${tcp_portmon 32768 61000 count} ] ───── out / remote ───────┤ │
-[ ${tcp_portmon 1 32767 count} ] ───── in  / locale ───────┘ │
+[ ${tcp_portmon 1 65535 count} ] ${alignr}─── connections  ───────┤ │
+[ ${tcp_portmon 32768 61000 count} ] ${alignr}─── out / remote ───────┤ │
+[ ${tcp_portmon 1 32767 count} ] ${alignr}─── in  / locale ───────┘ │
 ${alignr}Gpu utilisation ─┬─┤
 ${execpi 10 nvidia-smi | grep Default | awk '{print "["$3"]${alignr}"$9" / "$11" ─┤ │"}' }
+#${alignr}┌─────────────────────────────────┘
 
 ]]
