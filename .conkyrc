@@ -44,7 +44,7 @@ ${alignr}${nodename} ─┬─┤
 ${alignr}${exec uname -r } :  kernel ─┤ │
 ${alignr}$machine :    arch ─┤ │
 ${alignr}$uptime :  uptime ─┤ │
-${alignr}${exec cat /sys/class/power_supply/BAT*/capacity}% : battery ─┘ │
+${battery_bar 8,80}${alignr}${exec cat /sys/class/power_supply/BAT*/capacity}% : battery ─┘ │
 ${alignr}┌── system ─┬─┤
 ${alignr}${color2}CPU-0 ${cpu cpu0}% ${cpubar cpu0 5,40}${color}${alignr} ─┼─ ${freq_g 0} Ghz │ │
 ${alignr}CPU-1 ${cpu cpu1}% ${cpubar cpu1 5,40} ─┼─ ${freq_g 1} Ghz │ │
@@ -74,12 +74,12 @@ ${alignr}${color2}[${color} ${top_mem name 4}  ${top_mem mem 4} ${color2}]${colo
 ${alignr}${color2}[${color} ${top_mem name 5}  ${top_mem mem 5} ${color2}]${color} ─┘ │ │
 ${alignr}$swap/$swapmax ${swapbar 5,50} swap ─┤ │
 ${alignr}${fs_used /}/${fs_size /} ${fs_bar 5,50 /} root ─┘ │
-${alignr}${addr enp8s0}: enp8s0 net ─┬─┤
-${alignr}${upspeed enp8s0} k/s ${upspeedgraph enp8s0 8,70 DC143C DC143C}   up ─┤ │
-${alignr}${downspeed enp8s0} k/s ${downspeedgraph enp8s0 8,70 DC143C DC143C} down ─┤ │
-${alignr}${addr wlp9s0}: wlp9s0 ─┤ │
-${alignr}${upspeed wlp9s0} k/s ${upspeedgraph wlp9s0 8,70 DC143C DC143C}   up ─┤ │
-${alignr}${downspeed wlp9s0} k/s ${downspeedgraph wlp9s0 8,70 DC143C DC143C} down ─┤ │
+${alignr}${addr enp2s0}: enp2s0 net ─┬─┤
+${alignr}${upspeed enp2s0} k/s ${upspeedgraph enp2s0 8,70 DC143C DC143C}   up ─┤ │
+${alignr}${downspeed enp2s0} k/s ${downspeedgraph enp2s0 8,70 DC143C DC143C} down ─┤ │
+${alignr}${addr wlp3s0}: wlp3s0 ─┤ │
+${alignr}${upspeed wlp3s0} k/s ${upspeedgraph wlp3s0 8,70 DC143C DC143C}   up ─┤ │
+${alignr}${downspeed wlp3s0} k/s ${downspeedgraph wlp3s0 8,70 DC143C DC143C} down ─┤ │
 [ ${tcp_portmon 1 65535 count} ] ${alignr}─── connections  ───────┤ │
 [ ${tcp_portmon 32768 61000 count} ] ${alignr}─── out / remote ───────┤ │
 [ ${tcp_portmon 1 32767 count} ] ${alignr}─── in  / locale ───────┘ │
