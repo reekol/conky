@@ -38,7 +38,7 @@ conky.config = {
 }
 
 conky.text = [[
-${execpi   1200 bash ~/.conky/weather2.sh }
+${execpi   1200 bash ~/.conky/weather2.sh short }
 
 
 
