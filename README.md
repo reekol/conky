@@ -77,5 +77,5 @@ conky.text = [[
 ## To start use:
 
 ```bash
-conky ./.myconkyrc
+conky -c ./.myconkyrc
 ```
