@@ -28,20 +28,22 @@ print_res(){
     for ip in $ips; do 
         local s=`echo $ip | cut -d'-' -f1`
         local i=`echo $ip | cut -d'-' -f2`
-        echo "\n\${color$s}" $i $(cat $SSH_CONF | grep "$i$" -B2 | grep Host\ | cut -d' ' -f2)
+        echo "\n\${color$s}"$i $(cat $SSH_CONF | grep "$i$" -B2 | grep Host\ | cut -d' ' -f2)
     done
 }
 
 res=$(print_res | sort -r | column -t)
 
 echo -e $res | column -t
-offline="$(echo  "$res" | grep -v -E '^\$\{color0\}' | grep color1 | awk '{print $3}')"
+
+offline="$(echo  "$res" | grep -v -E '^\$\{color0\}' | grep color2 | awk '{print $2}')"
 offlineHash=$offline #$(echo "$offline" | md5sum - )
+
 if [ "$lastHash" != "$offlineHash" ]; then
     echo "$offline" > $PWD/cache/scan.offline.log
-    n=$(echo "$offline" | wc -l);
+    n=$(echo "$offline" | grep -v -e '^$' | wc -l);
     if [ $n -eq "0" ]; then
-        (echo "All servers online" |  espeak -a $LEVEL -p 99 -s 150) &
+        (echo "All servers online." |  espeak -a $LEVEL -p 99 -s 150) &
     else
         if [ $n -lt "3" ]; then
             if [ $n -eq "1" ]; then
@@ -54,6 +56,3 @@ if [ "$lastHash" != "$offlineHash" ]; then
         fi
     fi
 fi
-
-
-

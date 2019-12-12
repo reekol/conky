@@ -1,7 +1,7 @@
 require 'cairo'
 
 font="Mono"
-font_size=12
+font_size=8
 red,green,blue,alpha=1,1,1,1
 font_slant=CAIRO_FONT_SLANT_NORMAL
 font_face=CAIRO_FONT_WEIGHT_NORMAL
@@ -9,24 +9,24 @@ font_face=CAIRO_FONT_WEIGHT_NORMAL
 settings_table = {
     {
         title="Signal strength",
-        text_suffix='/70 Wifi',
+        text_suffix='/70 Wf',
         cmd="iwconfig 2>&1 | grep Quality | cut -d'=' -f2 | cut -d'/' -f1",
 
-              x=65,
-         text_x=30,
-        title_x=10,
+              x=35,
+         text_x=13,
+        title_x=0,
 
-              y=65,
-         text_y=67,
-        title_y=150,
+              y=35,
+         text_y=35,
+        title_y=85,
 
         max=70,
         bg_colour=0xffffff,
         bg_alpha=0.1,
         fg_colour=0xFF6600,
         fg_alpha=0.1,
-        radius=50,
-        thickness=15,
+        radius=30,
+        thickness=10,
         start_angle=0,
         end_angle=270,
         sectors=10
@@ -36,21 +36,21 @@ settings_table = {
         text_suffix='/50 ms',
         cmd="ping -w 2 -c 1 $(ip route | awk '/default/ { print $3 }') | grep ttl | cut -d '=' -f 4 | awk '{print $1}' | cut -d'.' -f1",
 
-              x=215,
-         text_x=185,
-        title_x=160,
+              x=140,
+         text_x=125,
+        title_x=105,
 
-              y=65,
-         text_y=67,
-        title_y=150,
+              y=35,
+         text_y=35,
+        title_y=85,
 
         max=50,
         bg_colour=0xffffff,
         bg_alpha=0.1,
         fg_colour=0xFF6600,
         fg_alpha=0.1,
-        radius=50,
-        thickness=15,
+        radius=30,
+        thickness=10,
         start_angle=0,
         end_angle=270,
         sectors=10
@@ -60,26 +60,97 @@ settings_table = {
         text_suffix='/100%',
         cmd="cat /sys/class/power_supply/BAT*/capacity",
 
-              x=365,
-         text_x=335,
-        title_x=310,
+              x=245,
+         text_x=225,
+        title_x=210,
 
-              y=65,
-         text_y=67,
-        title_y=150,
+              y=35,
+         text_y=35,
+        title_y=85,
 
         max=100,
         bg_colour=0xffffff,
         bg_alpha=0.1,
         fg_colour=0xFF6600,
         fg_alpha=0.1,
-        radius=50,
-        thickness=15,
+        radius=30,
+        thickness=10,
         start_angle=0,
         end_angle=270,
         sectors=10
     },
+    {
+        title="Backup drive Used.",
+        text_suffix='%/100%',
+        cmd="df -h | grep $(cat $PWD/.config | grep plan_b_backupDisc | awk '{print $2}') | awk '{print $5}' | tr '%' ' '",
 
+              x=35,
+         text_x=13,
+        title_x=0,
+
+              y=135,
+         text_y=135,
+        title_y=185,
+
+        max=100,
+        bg_colour=0xffffff,
+        bg_alpha=0.1,
+        fg_colour=0xFF6600,
+        fg_alpha=0.1,
+        radius=30,
+        thickness=10,
+        start_angle=90,
+        end_angle=360,
+        sectors=10
+    },
+    {
+        title="Load percents.",
+        text_suffix='%/100%',
+        cmd="echo  $(cat /proc/loadavg | cut -d ' ' -f1)  $(nproc) | awk '{printf \"%.0f\", ($1 / $2) * 100}'",
+
+              x=140,
+         text_x=125,
+        title_x=105,
+
+              y=135,
+         text_y=135,
+        title_y=185,
+
+        max=100,
+        bg_colour=0xffffff,
+        bg_alpha=0.1,
+        fg_colour=0xFF6600,
+        fg_alpha=0.1,
+        radius=30,
+        thickness=10,
+        start_angle=90,
+        end_angle=360,
+        sectors=10
+    },
+    {
+        title="Sound Volume meter.",
+        text_suffix='%/100%',
+        cmd="amixer get Master | grep % | awk '{print $4}' | tr '[]%' ' '",
+
+              x=245,
+         text_x=225,
+        title_x=210,
+
+              y=135,
+         text_y=135,
+        title_y=185,
+
+        max=100,
+        bg_colour=0xFFFFFF,
+        bg_alpha=0.1,
+        fg_colour=0xFF6600,
+        fg_alpha=0.1,
+        radius=30,
+        thickness=10,
+        start_angle=90,
+        end_angle=360,
+        sectors=10
+    },
 }
 
 function rgb_to_r_g_b(colour,alpha)

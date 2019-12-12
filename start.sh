@@ -14,16 +14,14 @@ sed -i "s/enp[0-9]s0/$(ls /sys/class/net | grep enp)/gi" ./.conkyrc
 sleep 2
      conky -c ./.conkyrc &&
      conky -c ./.conky-dmesg &&
-     conky -c ./.conky-gcal &&
      conky -c ./.conky-rings &&
-     conky -c ./.conky-rings-2 &&
      conky -c ./.conky-weather &&
      conky -c ./.conky-cal &&
-     conky -c ./.conky-hosts &&
+     conky -c ./.conky-clock && 
 sudo conky -c ./.conky-more &&
      echo $?
 
 (
-    sudo ./planb.sh &
-    bash ./lemonbar.sh 
+#    sudo ./planb.sh &
+#    xdotool search --sync --name "Conky-cndr" behave %@ mouse-enter exec /home/$USER/test.sh
 ); await
