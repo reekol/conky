@@ -1,12 +1,13 @@
 conky.config = {
+    own_window_title='Conky-cal',
     own_window_type='normal',
     alignment='top_left',
-    gap_x=826,
-    gap_y=450,
-    maximum_width=1890,
+    gap_x=1500,
+    gap_y=30,
+    maximum_width=420,
     background=true,
     use_xft=true,
-    font='Monospace:size=8',
+    font='Monospace:size=9',
     xftalpha=1,
     update_interval=1.0,
     total_run_times=0,
@@ -28,20 +29,15 @@ conky.config = {
     override_utf8_locale=true,
     use_spacer='right',
     own_window_argb_visual=true,
-    default_color='yellow',
+    default_color='gray',
     color0='green',
     color1='cyan',
     color2='DC143C',
-    lua_draw_hook_pre='ring_stats',
     pad_percents=3,
-    lua_load='~/.conky/clock_rings.lua',
-    lua_draw_hook_pre='clock_rings'
 }
 
-conky.text = [[${color2}
-                                                                                    ┌─────────────────────┐
-                                                                                    | ${execpi 1 date +'%Y-%m-%d %H:%M:%S'} |                                                    
-                                                                    ${color}................${color2}└─────────────────────┘${color}
-${execpi 60 d=$(date +%-d) && ncal -3 -M |  sed "s/\ $d /\$\{color2\}\ $d \$\{color\}/g" | sed 's/^/${goto 290}/g'}
-                                                                    ................
+
+conky.text = [[${color}
+${execpi 60 d=$(date +%-d) && ncal -3 -M |  sed "s/\ $d /\$\{color2\}\ $d \$\{color\}/g" | awk '{print "[" NR-1 "]  " $s }' | sed 's/^\[6/\$\{font Monospace:bold:underline:size=9}\[6/g' }${font}
+.........................${color2}...................${color}.......................................................................................................................................................
 ]]
