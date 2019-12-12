@@ -14,7 +14,7 @@ bash start.sh
 ```
 ![Example](./demo.png)
 
-# Create ./.myconkyrc containing:
+## Create ./.myconkyrc containing:
 
 ```
 conky.config = {
@@ -74,8 +74,8 @@ conky.text = [[
  
 ```
 
-# Configation is stored in *./.config* file
-# To start use:
+## Configation is stored in *./.config* file
+## To start use:
 
 ```bash
 conky ./.myconkyrc
