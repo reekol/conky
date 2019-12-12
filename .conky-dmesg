@@ -1,24 +1,28 @@
 conky.config = {
+    own_window_title='Conky-dmesg',
     own_window_type='normal',
     alignment='top_left',
-    gap_x=700,
+    gap_x=0,
     gap_y=30,
-    maximum_width=750,
+    maximum_width=1250,
     background=true,
     use_xft=true,
-    font='Monospace:size=6',
+    font='Monospace:size=7',
     xftalpha=1,
     update_interval=1.0,
+own_window_argb_value=80,
+own_window_colour='000000',
+own_window_transparent=true,
     total_run_times=0,
     own_window=true,
-    own_window_transparent=true,
     own_window_hints='undecorated,below,sticky,skip_taskbar,skip_pager',
     double_buffer=true,
     draw_shades=false,
     draw_outline=false,
-    draw_borders=false,
+    draw_borders=true,
     draw_graph_borders=true,
     stippled_borders=0,
+    border_inner_margin=8,
     border_width=0,
     default_shade_color='black',
     default_outline_color='white',
@@ -29,6 +33,7 @@ conky.config = {
     use_spacer='right',
     own_window_argb_visual=true,
     default_color='white',
+    color0='green',
     color1='cyan',
     color2='DC143C',
     lua_draw_hook_pre='ring_stats',
@@ -37,8 +42,9 @@ conky.config = {
 
 
 conky.text = [[
-#pr -2 -t -W50  
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-${color}${execpi 2 dmesg -T | tail -n 18 | sed 's/^/${goto 20}/g'}
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+${execpi 2 dmesg -T | tail -n 15}
+---- ${color0} D M E S G ${color} ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#${font Monospace:bold:size=10}
+#${rss https://news.google.com/rss/search?cf=all&hl=en-US&pz=1&q=astronomy&gl=US&ceid=US:en 50 item_titles 15}
+#---- ${color0} S C I E N C E ${color} -------------------------------------------------------------------------------------------------------------------------------------
 ]]

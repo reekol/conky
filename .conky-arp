@@ -1,13 +1,13 @@
 conky.config = {
+    own_window_title='Conky-dmesg',
     own_window_type='normal',
     alignment='top_left',
-    gap_x=1750,
-    gap_y=200,
-    maximum_width=200,
-    maximum_height=1200,
+    gap_x=600,
+    gap_y=410,
+    maximum_width=1880,
     background=true,
     use_xft=true,
-    font='Monospace:size=7',
+    font='Monospace:size=8',
     xftalpha=1,
     update_interval=1.0,
     total_run_times=0,
@@ -33,14 +33,12 @@ conky.config = {
     color0='green',
     color1='cyan',
     color2='DC143C',
-    color3='yellow',
-    pad_percents=3,
+    lua_draw_hook_pre='ring_stats',
+    pad_percents=3
 }
 
+
 conky.text = [[
-#${alignr}${offset -10}${font DejaVu Sans:pixelsize=30}${color2}Wea${color1}ther${font}        ${color}
-#${alignr}${offset -123}▲ 
-${alignr}${offset -105}└───┐
-${execpi   1200 bash ~/.conky/weather2.sh short }
-${voffset 0}.......................................................................................
+${color1}* Arp hosts alive:${color}
+${execpi 20 bash scan_arp.sh   | column -t }
 ]]

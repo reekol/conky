@@ -1,12 +1,13 @@
 conky.config = {
+    own_window_title='Conky-dmesg',
     own_window_type='normal',
     alignment='top_left',
-    gap_x=250,
-    gap_y=235,
-    maximum_width=1890,
+    gap_x=850,
+    gap_y=410,
+    maximum_width=1880,
     background=true,
     use_xft=true,
-    font='Monospace:size=4',
+    font='Monospace:size=8',
     xftalpha=1,
     update_interval=1.0,
     total_run_times=0,
@@ -30,7 +31,7 @@ conky.config = {
     own_window_argb_visual=true,
     default_color='white',
     color0='green',
-    color1='red',
+    color1='cyan',
     color2='DC143C',
     lua_draw_hook_pre='ring_stats',
     pad_percents=3
@@ -38,6 +39,6 @@ conky.config = {
 
 
 conky.text = [[
-${execpi 10 cd ~/.conky && bash ./scan.sh | pr -6 -W1600 | column -t}
-
+${color1}* Scan hosts:${color}
+${execpi 10 bash ./scan.sh | column -t}
 ]]

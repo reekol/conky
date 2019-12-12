@@ -2,7 +2,7 @@ conky.config = {
     own_window_type='normal',
     alignment='top_left',
     gap_x=1500,
-    gap_y=20,
+    gap_y=200,
     maximum_width=300,
     background=true,
     use_xft=true,
@@ -37,9 +37,9 @@ conky.config = {
 }
 
 conky.text = [[
-${alignr}${offset -10}${font DejaVu Sans:pixelsize=30}${color2}Ree${color1}Kol${font}${color}
-${alignr}${offset -23}▲ 
-${font monospace:pixelsize=12}${exec date +%H:%M:%S} - utc:${exec date +%H:%M:%S -u}${alignr} └───┐${font}
+#${alignr}${offset -10}${font DejaVu Sans:pixelsize=30}${color2}Ree${color1}Kol${font}${color}
+#${alignr}${offset -23}▲ 
+${font monospace:pixelsize=12}${exec date +%H:%M:%S} - utc:${exec date +%H:%M:%S -u}${alignr}${font} └───┐
 ${alignr}${nodename} ─┐
 ${alignr}${exec uname -r } :  kernel ─┤
 ${alignr}$machine :    arch ─┤
@@ -62,7 +62,7 @@ ${alignr}${color2}[${color} ${top name 3}  ${top cpu 3} ${color2}]${color} ─�
 ${alignr}${color2}[${color} ${top name 4}  ${top cpu 4} ${color2}]${color} ─┤ │
 ${alignr}${color2}[${color} ${top name 5}  ${top cpu 5} ${color2}]${color} ─┘ │
 ${alignr}${color1}[${color} $processes/$running_processes ${color1}]${color}    total/running ─┤
-${alignr}${color1}[${color} ${exec sensors | grep Package| cut -c 16-22}${color1}]${color}          temperature ─┘
+${alignr}${color1}[${color} ${exec sensors | grep Package| cut -c 16-22}${color1}    ]${color}      temperature ─┘
 ${alignr}  resources ─┐
 ${alignr}${color1}[${color} $diskio_read / $diskio_write ${color1}]${color} Disk R/W ─┤
 ${alignr}${membar 8,100} $memperc% ─ RAM ─┬─┤
@@ -74,17 +74,16 @@ ${alignr}${color2}[${color} ${top_mem name 4}  ${top_mem mem 4} ${color2}]${colo
 ${alignr}${color2}[${color} ${top_mem name 5}  ${top_mem mem 5} ${color2}]${color} ─┘ │
 ${alignr}$swap/$swapmax ${swapbar 5,50} swap ─┤
 ${alignr}${fs_used /}/${fs_size /} ${fs_bar 5,50 /} root ─┘
-${alignr}${addr enp2s0}: enp2s0 net ─┐
-${alignr}${upspeed enp2s0} k/s ${upspeedgraph enp2s0 8,70 DC143C DC143C}   up ─┤
-${alignr}${downspeed enp2s0} k/s ${downspeedgraph enp2s0 8,70 DC143C DC143C} down ─┤
-${alignr}${addr wlp3s0}: wlp3s0 ─┤
-${alignr}${upspeed wlp3s0} k/s ${upspeedgraph wlp3s0 8,70 DC143C DC143C}   up ─┤
-${alignr}${downspeed wlp3s0} k/s ${downspeedgraph wlp3s0 8,70 DC143C DC143C} down ─┤
+${alignr}${addr enp8s0}: enp8s0 net ─┐
+${alignr}${upspeed enp8s0} k/s ${upspeedgraph enp8s0 8,70 DC143C DC143C}   up ─┤
+${alignr}${downspeed enp8s0} k/s ${downspeedgraph enp8s0 8,70 DC143C DC143C} down ─┤
+${alignr}${addr wlp9s0}: wlp9s0 ─┤
+${alignr}${upspeed   wlp9s0} k/s ${upspeedgraph   wlp9s0 8,70 DC143C DC143C}   up ─┤
+${alignr}${downspeed wlp9s0} k/s ${downspeedgraph wlp9s0 8,70 DC143C DC143C} down ─┤
 [ ${tcp_portmon 1 65535 count} ] ${alignr}─── connections  ───────┤
 [ ${tcp_portmon 32768 61000 count} ] ${alignr}─── out / remote ───────┤
 [ ${tcp_portmon 1 32767 count} ] ${alignr}─── in  / locale ───────┘
 ${alignr}Gpu utilisation ─┐
 ${execpi 10 nvidia-smi | grep Default | awk '{print "[ "$3" ]${alignr}"$9" / "$11" ─┤"}' }
 ${alignr}└────────────────────────────────┘
-
 ]]

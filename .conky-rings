@@ -1,9 +1,9 @@
 conky.config = {
     own_window_type='normal',
     alignment='top_left',
-    gap_x=250,
-    gap_y=50,
-    maximum_width=1890,
+    gap_x=1500,
+    gap_y=850,
+    maximum_width=280,
     background=true,
     use_xft=true,
     font='Monospace:size=8',
@@ -44,23 +44,11 @@ conky.text = [[
 
 
 
+......................................................................................
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                                                            *
+......................................................................................
 ]]

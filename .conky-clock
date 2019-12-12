@@ -1,10 +1,9 @@
 conky.config = {
     own_window_type='normal',
     alignment='top_left',
-    gap_x=1750,
-    gap_y=200,
-    maximum_width=200,
-    maximum_height=1200,
+    gap_x=1790,
+    gap_y=950,
+    maximum_width=110,
     background=true,
     use_xft=true,
     font='Monospace:size=7',
@@ -29,18 +28,21 @@ conky.config = {
     override_utf8_locale=true,
     use_spacer='right',
     own_window_argb_visual=true,
-    default_color='white',
+    default_color='yellow',
     color0='green',
     color1='cyan',
     color2='DC143C',
-    color3='yellow',
+    lua_draw_hook_pre='ring_stats',
     pad_percents=3,
+    lua_load='~/.conky/clock_rings.lua',
+    lua_draw_hook_pre='clock_rings'
 }
 
 conky.text = [[
-#${alignr}${offset -10}${font DejaVu Sans:pixelsize=30}${color2}Wea${color1}ther${font}        ${color}
-#${alignr}${offset -123}▲ 
-${alignr}${offset -105}└───┐
-${execpi   1200 bash ~/.conky/weather2.sh short }
-${voffset 0}.......................................................................................
+
+
+
+
+
+                                           ,
 ]]

@@ -1,13 +1,14 @@
 conky.config = {
     own_window_type='normal',
     alignment='top_left',
-    gap_x=1750,
-    gap_y=200,
-    maximum_width=200,
-    maximum_height=1200,
+    gap_x=0,
+    gap_y=240,
+    maximum_width=1258,
+    minimum_width=1258,
+    minimum_height=200,
     background=true,
     use_xft=true,
-    font='Monospace:size=7',
+    font='Monospace:size=6',
     xftalpha=1,
     update_interval=1.0,
     total_run_times=0,
@@ -30,17 +31,15 @@ conky.config = {
     use_spacer='right',
     own_window_argb_visual=true,
     default_color='white',
-    color0='green',
     color1='cyan',
     color2='DC143C',
-    color3='yellow',
+    lua_draw_hook_pre='ring_stats',
     pad_percents=3,
+own_window_argb_value=80,
+own_window_colour='000000',
 }
 
+
 conky.text = [[
-#${alignr}${offset -10}${font DejaVu Sans:pixelsize=30}${color2}Wea${color1}ther${font}        ${color}
-#${alignr}${offset -123}▲ 
-${alignr}${offset -105}└───┐
-${execpi   1200 bash ~/.conky/weather2.sh short }
-${voffset 0}.......................................................................................
+${execpi 3600 bash ./gitinfo.sh       }
 ]]

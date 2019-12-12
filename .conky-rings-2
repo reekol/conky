@@ -32,10 +32,7 @@ conky.config = {
     color0='green',
     color1='cyan',
     color2='DC143C',
-    lua_draw_hook_pre='ring_stats',
     pad_percents=3,
-    lua_load='~/.conky/lua_rings_2.lua',
-    lua_draw_hook_pre='lua_rings',
 }
 
 

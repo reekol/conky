@@ -1,9 +1,11 @@
 conky.config = {
     own_window_type='normal',
     alignment='top_left',
-    gap_x=1750,
-    gap_y=40,
-    maximum_width=200,
+    gap_x=1270,
+    gap_y=0,
+    maximum_width=210,
+    minimum_width=210,
+    minimum_height=1080,
     background=true,
     use_xft=true,
     font='Monospace:size=6',
@@ -32,12 +34,16 @@ conky.config = {
     color1='cyan',
     color2='DC143C',
     lua_draw_hook_pre='ring_stats',
-    pad_percents=3
+    pad_percents=3,
+own_window_argb_value=80,
+own_window_colour='002233',
 }
 
 
 conky.text = [[
+
 ${color}Agenda:
-    ${execpi 600 date +%Y-%M-%D\ %H:%m:%S && gcalcli --conky --nolineart agenda --military | sed 's/color magenta/color/g' | sed 's/  */ /g'}
+    ${execpi 600 gcalcli --conky --lineart=unicode agenda yesterday $(date --date="31 days" +%Y-%m-%dT%R) --military | sed 's/color magenta/color/g' | sed 's/  */ /g' }
+#    ${execpi 600 date +%Y-%M-%D\ %H:%m:%S && gcalcli --conky agenda --military | sed 's/color magenta/color/g' | sed 's/  */ /g'}
 #    ${execpi 600 date +%Y-%M-%D\ %H:%m:%S && gcalcli --nolineart --nocolor agenda --military | sed -e 's/[a-z]/z/gi'}
 ]]

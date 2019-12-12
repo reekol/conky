@@ -1,12 +1,13 @@
 conky.config = {
+    own_window_title='Conky-dmesg',
     own_window_type='normal',
     alignment='top_left',
     gap_x=10,
-    gap_y=650,
-    maximum_width=1890,
+    gap_y=280,
+    maximum_width=1880,
     background=true,
     use_xft=true,
-    font='Monospace:size=5',
+    font='Monospace:size=8',
     xftalpha=1,
     update_interval=1.0,
     total_run_times=0,
@@ -29,22 +30,32 @@ conky.config = {
     use_spacer='right',
     own_window_argb_visual=true,
     default_color='white',
+    color0='green',
     color1='cyan',
     color2='DC143C',
+    lua_draw_hook_pre='ring_stats',
     pad_percents=3
 }
 
 
 conky.text = [[
-┌────────────────────────────────────────────────────────────
-│ Arp hosts alive:
-${execpi 20 bash scan_arp.sh | pr -c4 -t -w270 | column -t }
-│${color}
-┌────────────────────────────────────────────────────────────
-│ Wifi scan:
-${execi 10 bash scan_wifi.sh | pr -c4 -t -w270 | column -t }
-┌────────────────────────────────────────────────────────────
-│ Services/Port/Count               
-${execpi 10 bash scan_services.sh | pr -c4 -t -w270 | column -t}
-
+${color1}* Services/Port/Count${color}
+${execpi 10  bash scan_services.sh   | column -t}
+#${color}___________________________________________________
+ 
+${color1}* Arp hosts alive:${color}
+${execpi 20 bash scan_arp.sh   | column -t }
+#${color}___________________________________________________
+ 
+${color1}* Wifi scan:${color}
+${execi 10 bash scan_wifi.sh   | column -t }
+#${color}___________________________________________________
+ 
+${color1}* hci scan:${color}
+${execi 200 hcitool scan | column -t }
+#${color}___________________________________________________
+ 
+${color1}* Scan hosts:${color}
+${execpi 10 bash ./scan.sh | column -t}
+#${color}___________________________________________________
 ]]
