@@ -15,13 +15,12 @@ urlCache(){
     url=$(substr $1 "http" 1 '"' 2)
     bnm=$(basename $url)
     cch="$PWD/cache/$bnm"
-    [ -f  $cch ] || curl -s -o $cch $url
+    [ "$2" = "reload" ] && ( curl -s -o $cch $url )
+    [ -f  $cch        ] || ( curl -s -o $cch $url )
     echo $cch
 }
 
-rm $comicCache
-rm $imgCache
-comicCache=$(urlCache "https://garfield.com/comic")
+comicCache=$(urlCache "https://garfield.com/comic" "reload")
 comic=$(cat $comicCache)
 element=$(substr "$comic" 'class="comic-arrow-left"' 1 '" width="1200"' 1 )
 img=$(substr "$element" 'https://' 1 'width="1200"' 1 )
