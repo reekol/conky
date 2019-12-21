@@ -1,6 +1,6 @@
 
 source $PWD/config.sh
-data=$(curl -s "https://www.yahoo.com/news/weather/$(getConfig c_weather_loc)" --compressed) && echo $data > $PWD/cache/wtr.cache
+data=$(curl -s --cookie "weather=unit%3Dmetric" "https://www.yahoo.com/news/weather/$(getConfig c_weather_loc)" --compressed) && echo $data > $PWD/cache/wtr.cache
 data=$(cat $PWD/cache/wtr.cache)
 format=$1
 
