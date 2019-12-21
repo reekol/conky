@@ -68,6 +68,7 @@ conky.text = [[
  ${exec cd ~/.conky/ &&      conky -c ./.conky-weather  }
  ${exec cd ~/.conky/ &&      conky -c ./.conky-gcal     }
  ${exec cd ~/.conky/ &&      conky -c ./.conky-git      }
+ ${exec cd ~/.conky/ &&      conky -c ./.conky-comic    }
 ]]
 
  
