@@ -3,7 +3,7 @@ conky.config = {
     own_window_type='normal',
     alignment='top_left',
     gap_x=400,
-    gap_y=410,
+    gap_y=370,
     maximum_width=1880,
     background=true,
     use_xft=true,
@@ -40,5 +40,5 @@ conky.config = {
 
 conky.text = [[
 ${color1}* hci scan:${color}
-${execi 200 hcitool scan | column -t }
+${execi 3600 hcitool scan | column -t }
 ]]

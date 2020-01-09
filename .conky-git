@@ -1,8 +1,8 @@
 conky.config = {
     own_window_type='normal',
     alignment='top_left',
-    gap_x=0,
-    gap_y=240,
+    gap_x=420,
+    gap_y=210,
     maximum_width=1258,
     minimum_width=1258,
     minimum_height=200,

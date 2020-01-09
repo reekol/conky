@@ -25,5 +25,5 @@ comic=$(cat $comicCache)
 element=$(substr "$comic" 'class="comic-arrow-left"' 1 '" width="1200"' 1 )
 img=$(substr "$element" 'https://' 1 'width="1200"' 1 )
 imgCache=$(urlCache "$img")
-echo "\${image $imgCache -s 600x200 -p 10,10 -f 86400}"
+echo "\${image $imgCache -s 400x150 -p 0,0 -f 86400}"
 

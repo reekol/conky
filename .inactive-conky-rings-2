@@ -1,16 +1,14 @@
 conky.config = {
     own_window_type='normal',
     alignment='top_left',
-    gap_x=0,
-    gap_y=210,
-    maximum_width=600,
-    minimum_width=600,
-    minimum_height=220,
+    gap_x=980,
+    gap_y=650,
+    maximum_width=1890,
     background=true,
     use_xft=true,
-    font='Monospace:size=6',
+    font='Monospace:size=8',
     xftalpha=1,
-    update_interval=1.0,
+    update_interval=5.0,
     total_run_times=0,
     own_window=true,
     own_window_transparent=true,
@@ -31,15 +29,39 @@ conky.config = {
     use_spacer='right',
     own_window_argb_visual=true,
     default_color='white',
+    color0='green',
     color1='cyan',
     color2='DC143C',
-    lua_draw_hook_pre='ring_stats',
     pad_percents=3,
-own_window_argb_value=80,
-own_window_colour='000',
 }
 
 
+
+
 conky.text = [[
-${execpi 3600 bash ./comic.sh      }
+
+
+
+
+
+
+
+
+
+
+
+${execpi 2 bash ~/.conky/getPlayerInfo.sh }
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                            *
 ]]

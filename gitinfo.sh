@@ -26,8 +26,8 @@ uid=$(substr "$repo" 'data-scope-id="' 1 '" data-scoped-search-url' 1 | sed 's/d
 avatar=$(urlCache "https://avatars0.githubusercontent.com/u/$uid")
 svg=$(substr "$repo" '<svg width=' 1 '</g></svg>' 1)
 rm  $repoCache
-echo "\${image $avatar -s 145x145 -p 5,5 -f 86400}" 
+echo "\${image $avatar -s 150x150 -p 0,0 -f 86400}" 
 echo "$svg</g></svg>" > $PWD/cache/gitcontrib.svg
 convert -fuzz 15% -transparent white  $PWD/cache/gitcontrib.svg $PWD/cache/gitcontrib.png
-echo "\${image $PWD/cache/gitcontrib.png -s 800x120 -p 160,30 -f 86400}" 
-echo "\${voffset -30}\${goto 170}\${font Monospace:size=18}$name"
+echo "\${image $PWD/cache/gitcontrib.png -s 660x150 -p 160,0 -f 86400}" 
+#echo "\${voffset -30}\${goto 170}\${font Monospace:size=18}$name"

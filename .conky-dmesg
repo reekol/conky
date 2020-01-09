@@ -3,7 +3,7 @@ conky.config = {
     own_window_type='normal',
     alignment='top_left',
     gap_x=0,
-    gap_y=30,
+    gap_y=0,
     maximum_width=1250,
     background=true,
     use_xft=true,
@@ -42,7 +42,7 @@ own_window_transparent=true,
 
 
 conky.text = [[
-${execpi 2 dmesg -T | tail -n 15}
+${execpi 2 dmesg -T | tail -n 14}
 ---- ${color0} D M E S G ${color} ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #${font Monospace:bold:size=10}
 #${rss https://news.google.com/rss/search?cf=all&hl=en-US&pz=1&q=astronomy&gl=US&ceid=US:en 50 item_titles 15}

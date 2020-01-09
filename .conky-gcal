@@ -43,7 +43,7 @@ own_window_colour='002233',
 conky.text = [[
 
 ${color}Agenda:
-    ${execpi 600 gcalcli --conky --lineart=unicode agenda yesterday $(date --date="31 days" +%Y-%m-%dT%R) --military | sed 's/color magenta/color/g' | sed 's/  */ /g' }
+    ${execpi 600 gcalcli --conky --lineart=unicode agenda yesterday $(date --date="31 days" +%Y-%m-%dT%R) --military --refresh | sed 's/color magenta/color/g' | sed 's/  */ /g' }
 #    ${execpi 600 date +%Y-%M-%D\ %H:%m:%S && gcalcli --conky agenda --military | sed 's/color magenta/color/g' | sed 's/  */ /g'}
 #    ${execpi 600 date +%Y-%M-%D\ %H:%m:%S && gcalcli --nolineart --nocolor agenda --military | sed -e 's/[a-z]/z/gi'}
 ]]

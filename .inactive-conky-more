@@ -3,7 +3,7 @@ conky.config = {
     own_window_type='normal',
     alignment='top_left',
     gap_x=10,
-    gap_y=370,
+    gap_y=280,
     maximum_width=1880,
     background=true,
     use_xft=true,
@@ -40,5 +40,22 @@ conky.config = {
 
 conky.text = [[
 ${color1}* Services/Port/Count${color}
-${execpi 10 sudo bash scan_services.sh   | column -t}
+${execpi 10  bash scan_services.sh   | column -t}
+#${color}___________________________________________________
+ 
+${color1}* Arp hosts alive:${color}
+${execpi 20 bash scan_arp.sh   | column -t }
+#${color}___________________________________________________
+ 
+${color1}* Wifi scan:${color}
+${execi 10 bash scan_wifi.sh   | column -t }
+#${color}___________________________________________________
+ 
+${color1}* hci scan:${color}
+${execi 200 hcitool scan | column -t }
+#${color}___________________________________________________
+ 
+${color1}* Scan hosts:${color}
+${execpi 10 bash ./scan.sh | column -t}
+#${color}___________________________________________________
 ]]
