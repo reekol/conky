@@ -20,10 +20,10 @@ urlCache(){
     echo $cch
 }
 
-comicCache=$(urlCache "https://garfield.com/comic" "reload")
+comicCache=$(urlCache "https://www.gocomics.com/garfield/" "reload")
 comic=$(cat $comicCache)
-element=$(substr "$comic" 'class="comic-arrow-left"' 1 '" width="1200"' 1 )
-img=$(substr "$element" 'https://' 1 'width="1200"' 1 )
+element=$(substr "$comic" '<picture' 2 '</picture>' 2 )
+img=$(substr "$element" 'src="' 1 '/>' 1 | tr '"' "\t" | cut -f 2)
 imgCache=$(urlCache "$img")
 echo "\${image $imgCache -s 400x150 -p 0,0 -f 86400}"
 
