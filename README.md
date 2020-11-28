@@ -2,7 +2,7 @@
 
 
 ```bash
-apt-get install -y jq lm-sensors conky-all curl gcalcli sox zenity imagemagick
+apt-get install -y jq lm-sensors conky-all curl gcalcli sox zenity imagemagick nmap
 sensors-detect
 gcalcli agenda
 cd ~
