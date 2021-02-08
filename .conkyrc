@@ -45,16 +45,16 @@ ${alignr}${exec uname -r } :  kernel ─┤
 ${alignr}$machine :    arch ─┤
 ${alignr}$uptime :  uptime ─┤
 ${battery_bar 5,80 BAT1}${alignr}${exec cat /sys/class/power_supply/BAT*/capacity}% : battery ─┘
-Cpu${alignr}${color2}${cpu cpu0}% ${cpubar cpu0 5,30}${color}${alignr} ┬ Ghz ─┐
+Cpu${alignr}${color2}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-11} ${cpu cpu0}${cpubar cpu0 5,30}${color}${alignr} ┬ Ghz ─┐
 #${alignr}│           │
-1)${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="0"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-11} ${cpu cpu1}% ${cpugraph cpu1 5,30}─┼ ${freq_g 1} │
-2)${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="1"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-11} ${cpu cpu2}% ${cpugraph cpu2 5,30}─┼ ${freq_g 2} │
-3)${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="2"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-11} ${cpu cpu3}% ${cpugraph cpu3 5,30}─┼ ${freq_g 3} │
-4)${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="3"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-11} ${cpu cpu4}% ${cpugraph cpu4 5,30}─┼ ${freq_g 4} │
-5)${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="4"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-11} ${cpu cpu5}% ${cpugraph cpu5 5,30}─┼ ${freq_g 5} │
-6)${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="5"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-11} ${cpu cpu6}% ${cpugraph cpu6 5,30}─┼ ${freq_g 6} │
-7)${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="6"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-11} ${cpu cpu7}% ${cpugraph cpu7 5,30}─┼ ${freq_g 7} │
-8)${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="7"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-11} ${cpu cpu8}% ${cpugraph cpu8 5,30}─┴ ${freq_g 8} │
+${font freeserif:size=9}❶${font}${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="0"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-13} ${cpu cpu1}${cpugraph cpu1 5,30} ┼ ${freq_g 1} │
+${font freeserif:size=9}❷${font}${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="1"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-13} ${cpu cpu2}${cpugraph cpu2 5,30} ┼ ${freq_g 2} │
+${font freeserif:size=9}❸${font}${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="2"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-13} ${cpu cpu3}${cpugraph cpu3 5,30} ┼ ${freq_g 3} │
+${font freeserif:size=9}❹${font}${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="3"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-13} ${cpu cpu4}${cpugraph cpu4 5,30} ┼ ${freq_g 4} │
+${font freeserif:size=9}❺${font}${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="4"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-13} ${cpu cpu5}${cpugraph cpu5 5,30} ┼ ${freq_g 5} │
+${font freeserif:size=9}❻${font}${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="5"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-13} ${cpu cpu6}${cpugraph cpu6 5,30} ┼ ${freq_g 6} │
+${font freeserif:size=9}❼${font}${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="6"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-13} ${cpu cpu7}${cpugraph cpu7 5,30} ┼ ${freq_g 7} │
+${font freeserif:size=9}❽${font}${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="7"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-13} ${cpu cpu8}${cpugraph cpu8 5,30} ┴ ${freq_g 8} │
 ${alignr}${color1}[${color} $loadavg ${color1}]${color} ───── load ─┬─┤
 ${alignr}${color2}[${color} ${top name 1}  ${top cpu 1}  ${color2}]${color} ─┤ │
 ${alignr}${color2}[${color} ${top name 2}  ${top cpu 2}  ${color2}]${color} ─┤ │
@@ -87,4 +87,6 @@ ${alignr}Gpu utilisation ─┐
 ${execpi 10 nvidia-smi | grep Default | awk '{print "[ "$3" ]${alignr}"$9" / "$11" ─┤"}' }
 ${alignr}└────────────────────────────────┘
 ReeKol ${alignr}https://github.com/reekol
+
+
 ]]
