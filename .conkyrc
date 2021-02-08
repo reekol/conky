@@ -40,11 +40,11 @@ conky.text = [[
 #${alignr}${offset -10}${font DejaVu Sans:pixelsize=30}${color2}Ree${color1}Kol${font}${color}
 #${alignr}${offset -23}▲ 
 ${font monospace:pixelsize=12}${exec date +%H:%M:%S} - utc:${exec date +%H:%M:%S -u}${alignr}${font} └───┐
-${alignr}${nodename} ─┐
-${alignr}${exec uname -r } :  kernel ─┤
-${alignr}$machine :    arch ─┤
-${alignr}$uptime :  uptime ─┤
-${battery_bar 5,80 BAT1}${alignr}${exec cat /sys/class/power_supply/BAT*/capacity}% : battery ─┘
+${color1}${nodename}${color} ${alignr}─┐
+${exec uname -r } ${alignr}:   kernel ─┤
+$machine 			${alignr}:     arch ─┤
+$uptime 				${alignr}:   uptime ─┤
+${battery_bar 5,80 BAT1} ${exec cat /sys/class/power_supply/BAT*/capacity}% ${alignr}:  battery ─┘
 Cpu${alignr}${color2}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-11} ${cpu cpu0}${cpubar cpu0 5,30}${color}${alignr} ┬ Ghz ─┐
 #${alignr}│           │
 ${font freeserif:size=9}❶${font}${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="0"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-13} ${cpu cpu1}${cpugraph cpu1 5,30} ┼ ${freq_g 1} │
@@ -55,31 +55,31 @@ ${font freeserif:size=9}❺${font}${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,a
 ${font freeserif:size=9}❻${font}${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="5"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-13} ${cpu cpu6}${cpugraph cpu6 5,30} ┼ ${freq_g 6} │
 ${font freeserif:size=9}❼${font}${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="6"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-13} ${cpu cpu7}${cpugraph cpu7 5,30} ┼ ${freq_g 7} │
 ${font freeserif:size=9}❽${font}${alignr}${execpi 10 ps -e -o pcpu,cpuid,pid,args | sort -r | grep -v CPU | awk  '$2=="7"{print $4;exit;}' | awk -F/ '{print $NF}' | cut  -c 1-13} ${cpu cpu8}${cpugraph cpu8 5,30} ┴ ${freq_g 8} │
-${alignr}${color1}[${color} $loadavg ${color1}]${color} ───── load ─┬─┤
-${alignr}${color2}[${color} ${top name 1}  ${top cpu 1}  ${color2}]${color} ─┤ │
-${alignr}${color2}[${color} ${top name 2}  ${top cpu 2}  ${color2}]${color} ─┤ │
-${alignr}${color2}[${color} ${top name 3}  ${top cpu 3}  ${color2}]${color} ─┤ │
-${alignr}${color2}[${color} ${top name 4}  ${top cpu 4}  ${color2}]${color} ─┤ │
-${alignr}${color2}[${color} ${top name 5}  ${top cpu 5}  ${color2}]${color} ─┘ │
-${alignr}${color1}[${color} $processes / $running_processes ${color1}]${color}   total/running ─┤
-${alignr}${color1}[${color} ${exec sensors | grep Package| cut -c 16-22}${color1}     ]${color}      temperature ─┘
+${color1}[${color} $loadavg ${alignr}${color1}]${color} ───── load ─┬─┤
+${color2}[${color} ${top name 1}  ${top cpu 1}  ${alignr}${color2}]${color} ─┤ │
+${color2}[${color} ${top name 2}  ${top cpu 2}  ${alignr}${color2}]${color} ─┤ │
+${color2}[${color} ${top name 3}  ${top cpu 3}  ${alignr}${color2}]${color} ─┤ │
+${color2}[${color} ${top name 4}  ${top cpu 4}  ${alignr}${color2}]${color} ─┤ │
+${color2}[${color} ${top name 5}  ${top cpu 5}  ${alignr}${color2}]${color} ─┘ │
+${color1}[${color} $processes / $running_processes ${alignr}${color1}]${color}   total/running ─┤
+${color1}[${color} ${exec sensors | grep Package| cut -c 16-22}${alignr}${color1}]${color}     temperature ─┘
 ${alignr}  Resources ─┐
-${alignr}${color1}[${color} $diskio_read / $diskio_write ${color1}]${color}  Disk R/W ─┤
-${alignr}${membar 8,100} $memperc% ── RAM ─┬─┤
-${alignr}$mem / $memmax  ───────────┤ │
-${alignr}${color2}[${color} ${top_mem name 1}  ${top_mem mem 1}  ${color2}]${color} ─┤ │
-${alignr}${color2}[${color} ${top_mem name 2}  ${top_mem mem 2}  ${color2}]${color} ─┤ │
-${alignr}${color2}[${color} ${top_mem name 3}  ${top_mem mem 3}  ${color2}]${color} ─┤ │
-${alignr}${color2}[${color} ${top_mem name 4}  ${top_mem mem 4}  ${color2}]${color} ─┤ │
-${alignr}${color2}[${color} ${top_mem name 5}  ${top_mem mem 5}  ${color2}]${color} ─┘ │
-${alignr}$swap/$swapmax ${swapbar 5,50} swap ─┤
-${alignr}${fs_used /}/${fs_size /} ${fs_bar 5,50 /} root ─┘
-${alignr}${addr enp8s0}: enp8s0 net ─┐
-${alignr}${upspeed enp8s0} k/s ${upspeedgraph enp8s0 8,70 DC143C DC143C}   up ─┤
-${alignr}${downspeed enp8s0} k/s ${downspeedgraph enp8s0 8,70 DC143C DC143C} down ─┤
-${alignr}${addr wlp9s0}: wlp9s0 ─┤
-${alignr}${upspeed   wlp9s0} k/s ${upspeedgraph   wlp9s0 8,70 DC143C DC143C}   up ─┤
-${alignr}${downspeed wlp9s0} k/s ${downspeedgraph wlp9s0 8,70 DC143C DC143C} down ─┤
+${color1}[${color} $diskio_read / $diskio_write ${alignr}${color1}]${color}  Disk R/W ─┤
+${membar 8,100} $memperc% ${alignr} RAM ─┬─┤
+$mem / $memmax  ${alignr}───────────┤ │
+${color2}[${color} ${top_mem name 1}  ${top_mem mem 1}  ${alignr}${color2}]${color} ─┤ │
+${color2}[${color} ${top_mem name 2}  ${top_mem mem 2}  ${alignr}${color2}]${color} ─┤ │
+${color2}[${color} ${top_mem name 3}  ${top_mem mem 3}  ${alignr}${color2}]${color} ─┤ │
+${color2}[${color} ${top_mem name 4}  ${top_mem mem 4}  ${alignr}${color2}]${color} ─┤ │
+${color2}[${color} ${top_mem name 5}  ${top_mem mem 5}  ${alignr}${color2}]${color} ─┘ │
+$swap / $swapmax ${alignr}${swapbar 5,50} swap ─┤
+${fs_used /} / ${fs_size /} ${alignr}${fs_bar 5,50 /} root ─┘
+${color1}${addr enp8s0}${color}${alignr}: enp8s0 net ─┐
+${upspeed enp8s0} k/s ${upspeedgraph enp8s0 8,70 DC143C DC143C}   ${alignr}up ─┤
+${downspeed enp8s0} k/s ${downspeedgraph enp8s0 8,70 DC143C DC143C} ${alignr}down ─┤
+${color1}${addr wlp9s0}${color}${alignr}: wlp9s0 ─┤
+${upspeed   wlp9s0} k/s ${upspeedgraph   wlp9s0 8,70 DC143C DC143C}   ${alignr}up ─┤
+${downspeed wlp9s0} k/s ${downspeedgraph wlp9s0 8,70 DC143C DC143C} ${alignr}down ─┤
 [ ${tcp_portmon 1 65535 count} ] ${alignr}─── connections  ───────┤
 [ ${tcp_portmon 32768 61000 count} ] ${alignr}─── out / remote ───────┤
 [ ${tcp_portmon 1 32767 count} ] ${alignr}─── in  / locale ───────┘
