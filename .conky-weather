@@ -1,10 +1,9 @@
 conky.config = {
     own_window_type='normal',
     alignment='top_left',
-    gap_x=1750,
-    gap_y=200,
-    maximum_width=200,
-    maximum_height=1200,
+    gap_x=0,
+    gap_y=20,
+    maximum_width=400,
     background=true,
     use_xft=true,
     font='Monospace:size=7',
@@ -38,9 +37,11 @@ conky.config = {
 }
 
 conky.text = [[
-#${alignr}${offset -10}${font DejaVu Sans:pixelsize=30}${color2}Wea${color1}ther${font}        ${color}
-#${alignr}${offset -123}▲ 
+${alignr}${offset -10}${font DejaVu Sans:pixelsize=30}${color2}Wea${color1}ther${font}        ${color}
+${alignr}${offset -123}▲
 ${alignr}${offset -105}└───┐
-${execpi   1200 bash ~/.conky/weather2.sh short }
+#${execpi   1200 bash ./weather3.sh short }
+#${execpi   1200 ping -c2 192.168.0.1 }
+
 ${voffset 0}.......................................................................................
 ]]
