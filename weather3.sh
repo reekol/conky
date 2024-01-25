@@ -33,7 +33,7 @@ getToday(){
     local hur=""
     local img=""
     local src=""
-    local posTop=10
+    local posTop=100
     (
         for i in $(seq 1 $hours); do
              timeoftheday=$(substr "$today"   '<li ' $i '</li>' $i)
@@ -53,15 +53,15 @@ getToday(){
              srcTemp=$(urlCache $srcTemp)
              srcPrecip=$(urlCache $srcPrecip)
 
-            echo "-gravity northwest -pointsize 40 -font helvetica -fill white -annotate +20+$((posTop+10)) '$timeofthedayClock' \\"
-            echo "-gravity northwest -pointsize 70 -font helvetica -fill white -annotate +20+$((posTop+60)) '$tempC' \\"
+            echo "-gravity northwest -pointsize 40 -font helvetica -fill white -annotate +120+$((posTop+10)) '$timeofthedayClock' \\"
+            echo "-gravity northwest -pointsize 70 -font helvetica -fill white -annotate +120+$((posTop+60)) '$tempC' \\"
 
-            echo " \"$srcTemp\"    -gravity northwest  -geometry  +140+$posTop -composite \\"
-            echo " \"$srcPrecip\"  -gravity northwest  -geometry  +280+$((posTop+15)) -composite \\"
+            echo " \"$srcTemp\"    -gravity northwest  -geometry  +240+$posTop -composite \\"
+            echo " \"$srcPrecip\"  -gravity northwest  -geometry  +380+$((posTop+15)) -composite \\"
 
-            echo "-gravity northwest -pointsize 40 -font helvetica -fill white -annotate +360+$((posTop+10)) '$precipaionPercent' \\"
-            echo "-gravity northwest -pointsize 40 -font helvetica -fill white -annotate +300+$((posTop+60)) '~~ $windSpeed km/h' \\"
-            echo "-gravity northwest -pointsize 70 -font helvetica -fill white -annotate +600+$((posTop+10)) '$alt' \\"
+            echo "-gravity northwest -pointsize 40 -font helvetica -fill white -annotate +460+$((posTop+10)) '$precipaionPercent' \\"
+            echo "-gravity northwest -pointsize 40 -font helvetica -fill white -annotate +400+$((posTop+60)) '~~ $windSpeed km/h' \\"
+            echo "-gravity northwest -pointsize 70 -font helvetica -fill white -annotate +700+$((posTop+10)) '$alt' \\"
             posTop=$((posTop+160))
          done
 
@@ -73,7 +73,7 @@ getToday(){
 getDays(){
     local table=$(substr "$data" 'tenDayForecast' 1 '</table>' 1)
     local days=$(count "$table" 'role=row')
-    local posTop=600
+    local posTop=100
     (
         for i in $(seq 1 $days); do
             local dayi=$(substr "$table"   'role=row' $i 'day-part-1 showDayPart' $i)
@@ -89,7 +89,7 @@ getDays(){
 
             echo "-gravity northwest -pointsize 80 -font helvetica -fill white -annotate +2400+$((posTop+0)) '$dayName' \\"
             echo "-gravity northwest -pointsize 60 -font helvetica -fill red   -annotate +2200+$((posTop+0)) '$tempCHigh' \\"
-            echo "-gravity northwest -pointsize 60 -font helvetica -fill blue  -annotate +2200+$((posTop+80)) '$tempCLow' \\"
+            echo "-gravity northwest -pointsize 60 -font helvetica -fill white  -annotate +2200+$((posTop+80)) '$tempCLow' \\"
             echo "-gravity northwest -pointsize 40 -font helvetica -fill white -annotate +2310+$((posTop+70)) '$precipaionPercent' \\"
             echo " \"$srcPrecip\"    -gravity northwest  -geometry  +2300+$posTop -composite \\"
             echo " \"$srcTemp\"      -gravity northwest  -geometry  +2050+$((posTop-5)) -composite \\"
@@ -115,4 +115,5 @@ else
     getDays
 fi
 
-echo "cache/output.jpg"
+#echo " -resize 1080x1920 \\"
+echo " cache/output.jpg"
